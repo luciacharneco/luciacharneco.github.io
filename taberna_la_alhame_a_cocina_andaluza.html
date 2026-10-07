@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taberna La Alhameña | Cocina Andaluza y Tradición Granadina</title>
+  
+  <!-- Google Fonts: Playfair Display & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            albero: {
+              50: '#fdfbf5',
+              100: '#fbf5e6',
+              200: '#f6e7c1',
+              400: '#e7bf67',
+              500: '#d9a738',
+              600: '#b88426',
+              800: '#754f15'
+            },
+            terracota: {
+              500: '#c85a32',
+              600: '#ab431e',
+              700: '#8a3314'
+            },
+            oliva: {
+              700: '#485635',
+              800: '#344026'
+            },
+            nazari: {
+              800: '#143642',
+              900: '#0b2028'
+            }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            title: ['"Cinzel"', 'serif'],
+            sans: ['"Inter"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Efecto sutil de azulejo andaluz */
+    .bg-pattern {
+      background-color: #faf7f2;
+      background-image: radial-gradient(#d9a738 0.65px, transparent 0.65px), radial-gradient(#ab431e 0.65px, #faf7f2 0.65px);
+      background-size: 26px 26px;
+      background-position: 0 0, 13px 13px;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background-color: #d9a738;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-pattern text-stone-800 font-sans antialiased min-h-screen flex flex-col selection:bg-albero-200 selection:text-terracota-700">
+
+  <header class="sticky top-0 z-40 bg-stone-900/95 backdrop-blur-md text-stone-100 border-b border-albero-500/20 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Brand / Logo -->
+        <a href="#inicio" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-albero-600 via-albero-400 to-terracota-500 flex items-center justify-center text-stone-900 shadow-md group-hover:scale-105 transition-transform duration-300">
+            <i class="fa-solid fa-utensils text-lg"></i>
+          </div>
+          <div>
+            <span class="block font-title tracking-wider text-xl font-bold text-albero-400 group-hover:text-albero-300 transition-colors">LA ALHAMEÑA</span>
+            <span class="block text-xs uppercase tracking-widest text-stone-300 font-serif">Granada · Cocina Andaluza</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center space-x-7 text-sm font-medium">
+          <a href="#inicio" class="hover:text-albero-400 transition-colors">Inicio</a>
+          <a href="#carta" class="hover:text-albero-400 transition-colors">Nuestra Carta</a>
+          <a href="#filosofia" class="hover:text-albero-400 transition-colors">Filosofía</a>
+          <a href="#reservas" class="hover:text-albero-400 transition-colors">Reservar Mesa</a>
+          <a href="#contacto" class="hover:text-albero-400 transition-colors">Ubicación</a>
+        </nav>
+
+        <!-- Right Action Button: Comanda / Carrito Simulator -->
+        <div class="flex items-center gap-3">
+          <button onclick="toggleComandaModal()" class="relative p-2.5 rounded-full bg-stone-800 hover:bg-stone-700 text-albero-300 transition-all border border-albero-500/30 flex items-center justify-center" title="Ver mi Comanda">
+            <i class="fa-solid fa-receipt text-lg"></i>
+            <span id="comandaBadge" class="absolute -top-1.5 -right-1.5 bg-terracota-500 text-white text-[11px] font-bold rounded-full w-5 h-5 flex items-center justify-center shadow hidden">0</span>
+          </button>
+          
+          <a href="#reservas" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-terracota-600 to-terracota-500 hover:from-terracota-500 hover:to-terracota-600 text-white font-medium px-4 py-2 rounded-full text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-300 transform active:scale-95">
+            <i class="fa-regular fa-calendar-check"></i> Reservar
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="md:hidden p-2 text-stone-300 hover:text-white focus:outline-none" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden bg-stone-950/95 border-b border-stone-800 px-4 pt-3 pb-6 space-y-3">
+      <a href="#inicio" onclick="toggleMobileMenu()" class="block text-stone-200 hover:text-albero-400 font-medium py-2">Inicio</a>
+      <a href="#carta" onclick="toggleMobileMenu()" class="block text-stone-200 hover:text-albero-400 font-medium py-2">Nuestra Carta</a>
+      <a href="#filosofia" onclick="toggleMobileMenu()" class="block text-stone-200 hover:text-albero-400 font-medium py-2">Filosofía</a>
+      <a href="#reservas" onclick="toggleMobileMenu()" class="block text-stone-200 hover:text-albero-400 font-medium py-2">Reservar Mesa</a>
+      <a href="#contacto" onclick="toggleMobileMenu()" class="block text-stone-200 hover:text-albero-400 font-medium py-2">Ubicación y Horarios</a>
+    </div>
+  </header>
+
+  <section id="inicio" class="relative overflow-hidden bg-gradient-to-b from-stone-900 via-stone-900/90 to-stone-800 text-white py-20 lg:py-28">
+    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#d9a738_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-albero-500/10 border border-albero-500/30 text-albero-300 text-xs font-semibold tracking-wider uppercase">
+            <i class="fa-solid fa-mortar-pestle"></i> Cocina con Raíz · Granada
+          </div>
+          
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-100 leading-tight">
+            El auténtico sabor de <span class="italic text-albero-400">Andalucía</span> en el corazón de Granada.
+          </h1>
+          
+          <p class="text-stone-300 text-base sm:text-lg max-w-2xl font-light leading-relaxed mx-auto lg:mx-0">
+            Homenajeamos la tradición tabernera: cazuelas de barro, embutidos de Trevélez, fritura limpia de la Costa Tropical y la venerada cultura del tapeo granadino, servido con mimo y generosidad.
+          </p>
+
+          <div class="pt-3 flex flex-wrap gap-4 justify-center lg:justify-start">
+            <a href="#carta" class="px-7 py-3 rounded-full bg-albero-500 hover:bg-albero-400 text-stone-950 font-semibold tracking-wide shadow-lg hover:shadow-albero-500/30 transition-all flex items-center gap-2">
+              <i class="fa-solid fa-book-open"></i> Explorar la Carta
+            </a>
+            <a href="#reservas" class="px-7 py-3 rounded-full border border-stone-500 hover:border-albero-400 text-stone-200 hover:text-albero-300 font-medium transition-all">
+              Mesa para hoy
+            </a>
+          </div>
+
+          <!-- Feature badges -->
+          <div class="pt-6 grid grid-cols-3 gap-4 border-t border-stone-800 text-center">
+            <div>
+              <p class="font-bold text-albero-400 text-xl font-serif">100%</p>
+              <p class="text-stone-400 text-xs">Aceite Virgen Extra</p>
+            </div>
+            <div>
+              <p class="font-bold text-albero-400 text-xl font-serif">1ª Tapa</p>
+              <p class="text-stone-400 text-xs">Gratis con consumición</p>
+            </div>
+            <div>
+              <p class="font-bold text-albero-400 text-xl font-serif">Km 0</p>
+              <p class="text-stone-400 text-xs">Vega y Alpujarra</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero visual / feature card -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-md bg-stone-950/70 border border-stone-800 p-6 rounded-3xl shadow-2xl backdrop-blur-md">
+            <div class="relative rounded-2xl overflow-hidden h-72 bg-stone-800 border border-stone-700/50 mb-6 flex items-center justify-center group">
+              <!-- Decorative stylized dish graphic -->
+              <div class="text-center p-6 space-y-3">
+                <div class="w-20 h-20 mx-auto rounded-full bg-albero-500/20 border border-albero-500/40 flex items-center justify-center text-albero-300 text-3xl">
+                  <i class="fa-solid fa-plate-wheat"></i>
+                </div>
+                <h3 class="font-serif text-xl font-bold text-stone-100">La Tapa del Día</h3>
+                <p class="text-xs text-stone-400 leading-relaxed">
+                  Berenjenas crujientes con miel de caña de Frigiliana & Remojón granadino con bacalao ahumado.
+                </p>
+                <span class="inline-block px-3 py-1 bg-stone-800 text-albero-400 font-mono text-xs rounded-full border border-albero-500/20">
+                  Incluida con tu primer tercio
+                </span>
+              </div>
+            </div>
+
+            <!-- Quote badge -->
+            <div class="bg-stone-900/90 rounded-xl p-4 border border-stone-800 flex items-start gap-3">
+              <i class="fa-solid fa-quote-left text-albero-500 mt-1"></i>
+              <p class="text-xs text-stone-300 italic">
+                "En Granada no se come con prisas; se saborea con una copa de vino andaluz y una buena charla."
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="carta" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    
+    <!-- Section Title -->
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span class="text-terracota-600 font-semibold uppercase tracking-widest text-xs">Propuesta Gastronómica</span>
+      <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 mt-2 mb-4">
+        Nuestra Carta Tradicional
+      </h2>
+      <div class="w-16 h-1 bg-albero-500 mx-auto rounded-full mb-4"></div>
+      <p class="text-stone-600 text-sm sm:text-base">
+        Precios justos y raciones generosas al estilo de Granada. Añade platos para calcular tu comanda o encargar directamente a mesa.
+      </p>
+    </div>
+
+    <!-- Search & Filter Controls -->
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 bg-white/80 backdrop-blur p-4 rounded-2xl border border-stone-200 shadow-sm">
+      
+      <!-- Category Tabs -->
+      <div class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 custom-scrollbar" id="categoryContainer">
+        <!-- Generados dinámicamente con JS -->
+      </div>
+
+      <!-- Real-time search field -->
+      <div class="relative w-full md:w-72">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-sm"></i>
+        <input 
+          type="text" 
+          id="menuSearchInput" 
+          placeholder="Buscar berenjenas, rabo..." 
+          class="w-full pl-10 pr-4 py-2 text-sm rounded-full bg-stone-50 border border-stone-300 focus:outline-none focus:border-terracota-500 focus:ring-1 focus:ring-terracota-500 transition-all"
+          oninput="handleSearch(this.value)"
+        >
+      </div>
+    </div>
+
+    <!-- Menu Cards Grid -->
+    <div id="menuGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Items injectados por JS -->
+    </div>
+
+    <!-- Empty Results Fallback -->
+    <div id="noResults" class="hidden text-center py-16">
+      <i class="fa-solid fa-bowl-food text-4xl text-stone-300 mb-3"></i>
+      <p class="text-stone-600 font-medium">No se han encontrado platos con ese criterio.</p>
+      <button onclick="resetFilters()" class="mt-3 text-xs text-terracota-600 underline font-semibold">Restablecer filtros</button>
+    </div>
+
+  </section>
+
+  <section id="filosofia" class="bg-stone-900 text-stone-100 py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="bg-stone-800/60 p-8 rounded-2xl border border-stone-700/60 hover:border-albero-500/50 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-albero-500/20 text-albero-400 flex items-center justify-center text-2xl mb-5">
+            <i class="fa-solid fa-seedling"></i>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-stone-100 mb-2">Despensa de Cercanía</h3>
+          <p class="text-stone-400 text-sm leading-relaxed">
+            Trabajamos con huertas de la Vega Granadina, queserías artesanas de Montefrío y jamón de secadero natural de Trevélez (Sierra Nevada).
+          </p>
+        </div>
+
+        <div class="bg-stone-800/60 p-8 rounded-2xl border border-stone-700/60 hover:border-albero-500/50 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-terracota-500/20 text-terracota-400 flex items-center justify-center text-2xl mb-5">
+            <i class="fa-solid fa-fire-burner"></i>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-stone-100 mb-2">Guisos a Fuego Lento</h3>
+          <p class="text-stone-400 text-sm leading-relaxed">
+            Nuestros caldos y rabo de toro reducen durante más de cinco horas con vino tinto andaluz, honrando el recetario de nuestras abuelas.
+          </p>
+        </div>
+
+        <div class="bg-stone-800/60 p-8 rounded-2xl border border-stone-700/60 hover:border-albero-500/50 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-nazari-800 text-sky-300 flex items-center justify-center text-2xl mb-5">
+            <i class="fa-solid fa-wine-glass"></i>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-stone-100 mb-2">La Cultura de la Barra</h3>
+          <p class="text-stone-400 text-sm leading-relaxed">
+            Granada es compartir. Disfruta de la cerveza Alhambra recién tirada, la tapa siempre incluida y el ambiente animado de taberna viva.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="reservas" class="py-16 sm:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <div class="bg-white rounded-3xl shadow-xl border border-stone-200/80 overflow-hidden">
+      <div class="grid grid-cols-1 md:grid-cols-12">
+        
+        <!-- Left Banner Info -->
+        <div class="md:col-span-5 bg-gradient-to-br from-terracota-700 via-terracota-600 to-stone-900 text-white p-8 md:p-10 flex flex-col justify-between">
+          <div>
+            <span class="text-albero-300 text-xs font-bold uppercase tracking-widest">Reserva Tu Experiencia</span>
+            <h3 class="font-serif text-3xl font-bold mt-2 mb-4">¿Almorzamos o cenamos juntos?</h3>
+            <p class="text-stone-200 text-sm leading-relaxed mb-6 font-light">
+              Recomendamos reservar con antelación, especialmente para noches de fin de semana y grupos.
+            </p>
+
+            <ul class="space-y-3 text-xs text-stone-200">
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-clock text-albero-400"></i> Almuerzos: 13:00 - 16:30 h
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-moon text-albero-400"></i> Cenas: 20:00 - 23:30 h
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-phone text-albero-400"></i> +34 958 22 45 78
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-white/20 text-[11px] text-stone-300">
+            * Para grupos mayores de 8 comensales, contáctanos directamente por teléfono.
+          </div>
+        </div>
+
+        <!-- Form fields -->
+        <div class="md:col-span-7 p-8 md:p-10">
+          <form id="reservationForm" onsubmit="handleReservationSubmit(event)" class="space-y-4">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-stone-700 mb-1" for="resName">Nombre completo *</label>
+                <input required type="text" id="resName" placeholder="Ej. Lucía Martínez" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:border-terracota-600 focus:ring-1 focus:ring-terracota-600">
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-stone-700 mb-1" for="resPhone">Teléfono de contacto *</label>
+                <input required type="tel" id="resPhone" placeholder="600 000 000" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:border-terracota-600 focus:ring-1 focus:ring-terracota-600">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-stone-700 mb-1" for="resDate">Fecha *</label>
+                <input required type="date" id="resDate" class="w-full px-3 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:border-terracota-600 focus:ring-1 focus:ring-terracota-600">
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-stone-700 mb-1" for="resTime">Turno / Hora *</label>
+                <select required id="resTime" class="w-full px-3 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:border-terracota-600 focus:ring-1 focus:ring-terracota-600 bg-white">
+                  <option value="13:30">13:30 (Comida)</option>
+                  <option value="14:15">14:15 (Comida)</option>
+                  <option value="15:00">15:00 (Comida)</option>
+                  <option value="20:30">20:30 (Cena)</option>
+                  <option value="21:30">21:30 (Cena)</option>
+                  <option value="22:15">22:15 (Cena)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-stone-700 mb-1" for="resGuests">Personas *</label>
+                <select required id="resGuests" class="w-full px-3 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:border-terracota-600 focus:ring-1 focus:ring-terracota-600 bg-white">
+                  <option value="1">1 Persona</option>
+                  <option value="2" selected>2 Personas</option>
+                  <option value="3">3 Personas</option>
+                  <option value="4">4 Personas</option>
+                  <option value="5">5 Personas</option>
+                  <option value="6">6 Personas</option>
+                  <option value="7">7 Personas</option>
+                  <option value="8">8 Personas</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-stone-700 mb-1" for="resNotes">Peticiones especiales o alergias</label>
+              <textarea id="resNotes" rows="2" placeholder="Ej. Mesa en terraza o trona para bebé, alérgico a los frutos secos..." class="w-full px-3.5 py-2 text-sm rounded-xl border border-stone-300 focus:outline-none focus:border-terracota-600 focus:ring-1 focus:ring-terracota-600"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-terracota-600 hover:bg-terracota-500 text-white font-semibold text-sm tracking-wide shadow-md hover:shadow-lg transition-all duration-200">
+              Confirmar Solicitud de Reserva
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Comanda / Simulador de Cuenta -->
+  <div id="comandaModal" class="fixed inset-0 z-50 bg-stone-900/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-fade-in border border-stone-200">
+      
+      <!-- Header -->
+      <div class="px-6 py-4 bg-stone-900 text-stone-100 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-receipt text-albero-400"></i>
+          <h3 class="font-serif font-bold text-lg">Mi Comanda</h3>
+        </div>
+        <button onclick="toggleComandaModal()" class="text-stone-400 hover:text-white text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Content list -->
+      <div id="comandaItems" class="p-6 overflow-y-auto flex-1 space-y-3 custom-scrollbar">
+        <!-- Renderizado por JS -->
+      </div>
+
+      <!-- Footer with totals -->
+      <div class="p-6 bg-stone-50 border-t border-stone-200 space-y-3">
+        <div class="flex justify-between items-center text-sm text-stone-600">
+          <span>Subtotal estimado</span>
+          <span id="comandaSubtotal" class="font-mono font-medium">0.00 €</span>
+        </div>
+        <div class="flex justify-between items-center text-xs text-stone-500">
+          <span>I.V.A. (10% incluido)</span>
+          <span id="comandaTax" class="font-mono">0.00 €</span>
+        </div>
+        <div class="flex justify-between items-center text-base font-bold text-stone-900 pt-2 border-t border-stone-200">
+          <span>Total a pagar</span>
+          <span id="comandaTotal" class="font-mono text-terracota-600 text-lg">0.00 €</span>
+        </div>
+
+        <div class="pt-2 flex gap-3">
+          <button onclick="clearComanda()" class="w-1/3 py-2.5 text-xs text-stone-600 hover:text-red-600 border border-stone-300 rounded-xl transition-colors">
+            Vaciar
+          </button>
+          <button onclick="copyComandaSummary()" class="w-2/3 py-2.5 bg-albero-500 hover:bg-albero-400 text-stone-950 font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow">
+            Copiar Resumen
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-stone-900 text-stone-100 px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-700 text-xs">
+    <i id="toastIcon" class="fa-solid fa-circle-check text-albero-400 text-base"></i>
+    <span id="toastMessage">Elemento añadido</span>
+  </div>
+
+  <!-- Reservation Confirmation Modal -->
+  <div id="confirmReservationModal" class="fixed inset-0 z-50 bg-stone-900/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 text-center shadow-2xl border border-stone-200">
+      <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center text-2xl mb-4">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <h3 class="font-serif text-2xl font-bold text-stone-900 mb-2">¡Mesa Solicitada!</h3>
+      <p id="reservationSummaryText" class="text-xs text-stone-600 leading-relaxed mb-6">
+        Hemos registrado tu petición. Te enviaremos una confirmación por SMS o WhatsApp antes del servicio.
+      </p>
+      <button onclick="closeReservationModal()" class="w-full py-3 bg-stone-900 hover:bg-stone-800 text-white rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors">
+        Entendido, muchas gracias
+      </button>
+    </div>
+  </div>
+
+  <footer id="contacto" class="bg-stone-950 text-stone-400 pt-16 pb-12 mt-auto border-t border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-stone-800">
+        
+        <!-- About -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full bg-albero-500 text-stone-950 flex items-center justify-center font-bold text-sm">
+              <i class="fa-solid fa-utensils"></i>
+            </div>
+            <span class="font-title text-stone-100 tracking-wider font-bold">LA ALHAMEÑA</span>
+          </div>
+          <p class="text-xs leading-relaxed text-stone-400">
+            Taberna y restaurante tradicional. Auténticas tapas granadinas, frituras de costa y guisos de Sierra Nevada servidos con hospitalidad andaluza.
+          </p>
+          <div class="flex gap-3 text-stone-300">
+            <span class="w-8 h-8 rounded-full bg-stone-900 flex items-center justify-center hover:text-albero-400 cursor-pointer border border-stone-800"><i class="fa-brands fa-instagram"></i></span>
+            <span class="w-8 h-8 rounded-full bg-stone-900 flex items-center justify-center hover:text-albero-400 cursor-pointer border border-stone-800"><i class="fa-brands fa-facebook-f"></i></span>
+            <span class="w-8 h-8 rounded-full bg-stone-900 flex items-center justify-center hover:text-albero-400 cursor-pointer border border-stone-800"><i class="fa-brands fa-tripadvisor"></i></span>
+          </div>
+        </div>
+
+        <!-- Location -->
+        <div>
+          <h4 class="text-sm font-semibold text-stone-100 uppercase tracking-wider mb-4 font-serif">Encuéntranos</h4>
+          <p class="text-xs text-stone-400 leading-relaxed space-y-1">
+            <span class="block text-stone-300"><i class="fa-solid fa-location-dot text-terracota-500 mr-1.5"></i> Calle San Matías, 18 (Barrio del Realejo)</span>
+            <span class="block">18009 Granada, España</span>
+            <span class="block text-stone-500 mt-2">A 3 minutos de Plaza Nueva y a los pies de la Alhambra.</span>
+          </p>
+        </div>
+
+        <!-- Schedule -->
+        <div>
+          <h4 class="text-sm font-semibold text-stone-100 uppercase tracking-wider mb-4 font-serif">Horarios</h4>
+          <ul class="text-xs space-y-1.5 text-stone-400">
+            <li class="flex justify-between">
+              <span>Martes a Domingo:</span>
+              <span class="text-stone-300">12:30 - 17:00</span>
+            </li>
+            <li class="flex justify-between">
+              <span>Noches:</span>
+              <span class="text-stone-300">20:00 - 00:00</span>
+            </li>
+            <li class="flex justify-between text-terracota-400 pt-1">
+              <span>Lunes:</span>
+              <span>Cerrado por descanso</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Badges / Granada info -->
+        <div>
+          <h4 class="text-sm font-semibold text-stone-100 uppercase tracking-wider mb-4 font-serif">Compromiso Granada</h4>
+          <p class="text-xs text-stone-400 leading-relaxed mb-3">
+            Orgullosos miembros de la Asociación de Hostelería de Granada. Ingredientes amparados por Denominaciones de Origen de Andalucía.
+          </p>
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stone-900 border border-stone-800 text-[11px] text-albero-400">
+            <i class="fa-solid fa-beer-mug-empty"></i> Cerveza Alhambra de grifo bien fría
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-4">
+        <p>© <span id="currentYear"></span> Taberna La Alhameña S.L. - Todos los derechos reservados.</p>
+        <p class="text-stone-600">Precios con I.V.A. incluido conforme a normativa turística.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Menú con precios realistas y representativos de Granada
+    const menuData = [
+      // ENTRANTES / PARA TAPEAR
+      {
+        id: "ent-1",
+        category: "entrantes",
+        categoryLabel: "Entrantes",
+        title: "Berenjenas con Miel de Caña",
+        desc: "Láminas finas crujientes con auténtica miel de caña de Frigiliana y toque de sal marina.",
+        price: 7.50,
+        badge: "Clásico Andaluz",
+        icon: "fa-seedling"
+      },
+      {
+        id: "ent-2",
+        category: "entrantes",
+        categoryLabel: "Entrantes",
+        title: "Salmorejo Cordobés Tradicional",
+        desc: "Emulsión sedosa de tomate de la vega, virutas de jamón de Trevélez y huevo duro de corral.",
+        price: 6.00,
+        badge: "Recomendado",
+        icon: "fa-bowl-food"
+      },
+      {
+        id: "ent-3",
+        category: "entrantes",
+        categoryLabel: "Entrantes",
+        title: "Remojón Granadino de Bacalao",
+        desc: "Ensalada tradicional de naranja dulce, bacalao desalado desmigado, cebolleta y aceitunas negras.",
+        price: 7.50,
+        badge: "Típico Granada",
+        icon: "fa-lemon"
+      },
+      {
+        id: "ent-4",
+        category: "entrantes",
+        categoryLabel: "Entrantes",
+        title: "Croquetas de Rabo de Toro (6 uds)",
+        desc: "Bechamel cremosa, guiso desmigado con vino oloroso y rebozado de panko crujiente.",
+        price: 8.00,
+        badge: "Caseras",
+        icon: "fa-cookie"
+      },
+      {
+        id: "ent-5",
+        category: "entrantes",
+        categoryLabel: "Entrantes",
+        title: "Tabla de Jamón de Trevélez y Queso Montefrío",
+        desc: "Jamón curado a más de 1.400m de altitud con queso curado de cabra premiado y regañás.",
+        price: 13.50,
+        badge: "Sierra Nevada",
+        icon: "fa-bacon"
+      },
+
+      // GUISOS Y CARNES
+      {
+        id: "carne-1",
+        category: "carnes",
+        categoryLabel: "Guisos y Carnes",
+        title: "Habitas Baby con Jamón y Huevo Poché",
+        desc: "Habitas tiernas salteadas con dados de jamón ibérico de la sierra y yema lista para romper.",
+        price: 11.00,
+        badge: "Vega de Granada",
+        icon: "fa-egg"
+      },
+      {
+        id: "carne-2",
+        category: "carnes",
+        categoryLabel: "Guisos y Carnes",
+        title: "Rabo de Toro al Vino de la Alpujarra",
+        desc: "Estofado lentamente durante 5 horas, meloso, con salsa reducida y patatas panaderas.",
+        price: 14.50,
+        badge: "Especialidad",
+        icon: "fa-fire-burner"
+      },
+      {
+        id: "carne-3",
+        category: "carnes",
+        categoryLabel: "Guisos y Carnes",
+        title: "Auténtico Plato Alpujarreño",
+        desc: "Lomo de orza, longaniza casera, morcilla, patatas a lo pobre con pimientos y dos huevos fritos.",
+        price: 11.50,
+        badge: "Contundente",
+        icon: "fa-plate-wheat"
+      },
+      {
+        id: "carne-4",
+        category: "carnes",
+        categoryLabel: "Guisos y Carnes",
+        title: "Secreto Ibérico a la Brasa",
+        desc: "Corte jugoso a la parrilla con sal en escamas y guarnición de patatas a lo pobre confitadas.",
+        price: 13.00,
+        badge: "Brasa",
+        icon: "fa-drumstick-bite"
+      },
+
+      // DEL MAR (PESCAÍTO)
+      {
+        id: "mar-1",
+        category: "mar",
+        categoryLabel: "Del Mar",
+        title: "Fritura Variada de la Costa Tropical",
+        desc: "Boquerones vitorianos, calamares y salmonetes en harina limpia de almorta y AOVE bien caliente.",
+        price: 12.00,
+        badge: "Motril y Almuñécar",
+        icon: "fa-fish"
+      },
+      {
+        id: "mar-2",
+        category: "mar",
+        categoryLabel: "Del Mar",
+        title: "Cazón en Adobo al Estilo Andaluz",
+        desc: "Macerado con comino, orégano, ajo y vinagre de Jerez, frito crujiente por fuera y jugoso dentro.",
+        price: 9.50,
+        badge: "Sabor Costero",
+        icon: "fa-fish-fins"
+      },
+      {
+        id: "mar-3",
+        category: "mar",
+        categoryLabel: "Del Mar",
+        title: "Calamares Fritos a la Andaluza",
+        desc: "Tiras frescas de calamar enharinadas al punto con rodaja de limón andaluz.",
+        price: 10.50,
+        badge: "Fritura Limpia",
+        icon: "fa-shrimp"
+      },
+
+      // POSTRES CASEROS
+      {
+        id: "pos-1",
+        category: "postres",
+        categoryLabel: "Postres",
+        title: "Piononos Artesanos de Santa Fe (2 uds)",
+        desc: "Bizcocho humedecido en almíbar, enrollado con crema y coronado con yema tostada.",
+        price: 4.00,
+        badge: "Postre Insignia",
+        icon: "fa-cake-candles"
+      },
+      {
+        id: "pos-2",
+        category: "postres",
+        categoryLabel: "Postres",
+        title: "Tarta de Queso Curado Payoyo",
+        desc: "Horneada al punto cremoso con un toque intenso de queso gaditano y base de galleta de canela.",
+        price: 5.00,
+        badge: "Casera 100%",
+        icon: "fa-cheese"
+      },
+      {
+        id: "pos-3",
+        category: "postres",
+        categoryLabel: "Postres",
+        title: "Poleá Dulce con Tostones y Canela",
+        desc: "Gachas dulces tradicionales perfumadas con anís estrellado, tostones fritos y canela molida.",
+        price: 4.00,
+        badge: "Receta Abuela",
+        icon: "fa-spoon"
+      },
+
+      // BEBIDAS Y VINOS
+      {
+        id: "beb-1",
+        category: "bebidas",
+        categoryLabel: "Bebidas",
+        title: "Cerveza Alhambra Especial (Tercio)",
+        desc: "Cerveza rubia de Granada por excelencia, servida a temperatura óptima.",
+        price: 2.50,
+        badge: "Cerveza Local",
+        icon: "fa-beer-mug-empty"
+      },
+      {
+        id: "beb-2",
+        category: "bebidas",
+        categoryLabel: "Bebidas",
+        title: "Cerveza Alhambra Reserva 1925 ('Milno')",
+        desc: "Extra intensa y aromática, icono granadino de botella verde labrada.",
+        price: 3.00,
+        badge: "Favorita",
+        icon: "fa-bottle-droplet"
+      },
+      {
+        id: "beb-3",
+        category: "bebidas",
+        categoryLabel: "Bebidas",
+        title: "Copa de Vino Tinto D.O. Vinos de Granada",
+        desc: "Uvas cultivadas en la altura de Sierra Nevada y Contraviesa. Frutal y equilibrado.",
+        price: 3.00,
+        badge: "D.O. Granada",
+        icon: "fa-wine-glass"
+      },
+      {
+        id: "beb-4",
+        category: "bebidas",
+        categoryLabel: "Bebidas",
+        title: "Tinto de Verano Casero con Limón Natural",
+        desc: "Elaborado con vino tinto de la casa, zumo de limón fresco y toque de soda.",
+        price: 2.70,
+        badge: "Refrescante",
+        icon: "fa-glass-water"
+      }
+    ];
+
+    // Categorías para los filtros
+    const categories = [
+      { id: "todos", name: "Todos los Platos" },
+      { id: "entrantes", name: "Tapeo y Entrantes" },
+      { id: "carnes", name: "Guisos y Carnes" },
+      { id: "mar", name: "Del Mar" },
+      { id: "postres", name: "Postres" },
+      { id: "bebidas", name: "Bebidas y Vinos" }
+    ];
+
+    let currentCategory = "todos";
+    let searchQuery = "";
+    let comanda = {}; // { dishId: quantity }
+
+    // Inicializar año actual en pie de página
+    document.getElementById('currentYear').innerText = new Date().getFullYear();
+
+    // Establecer fecha mínima para reservas a hoy
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('resDate').min = today;
+    document.getElementById('resDate').value = today;
+
+    // Renderizado de las pestañas de categoría
+    function renderCategoryTabs() {
+      const container = document.getElementById("categoryContainer");
+      container.innerHTML = categories.map(cat => {
+        const isActive = cat.id === currentCategory;
+        return `
+          <button 
+            onclick="setCategory('${cat.id}')" 
+            class="px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
+              isActive 
+                ? 'bg-stone-900 text-albero-400 shadow-sm border border-stone-800' 
+                : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
+            }"
+          >
+            ${cat.name}
+          </button>
+        `;
+      }).join('');
+    }
+
+    // Cambiar categoría seleccionada
+    function setCategory(catId) {
+      currentCategory = catId;
+      renderCategoryTabs();
+      renderMenu();
+    }
+
+    function renderMenu() {
+      const grid = document.getElementById("menuGrid");
+      const noResults = document.getElementById("noResults");
+
+      const filtered = menuData.filter(item => {
+        const matchesCategory = currentCategory === "todos" || item.category === currentCategory;
+        const query = searchQuery.trim().toLowerCase();
+        const matchesSearch = query === "" || 
+          item.title.toLowerCase().includes(query) || 
+          item.desc.toLowerCase().includes(query) ||
+          item.categoryLabel.toLowerCase().includes(query);
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = "";
+        noResults.classList.remove("hidden");
+        return;
+      }
+
+      noResults.classList.add("hidden");
+
+      grid.innerHTML = filtered.map(dish => {
+        const qtyInComanda = comanda[dish.id] || 0;
+        return `
+          <div class="bg-white rounded-2xl p-5 border border-stone-200/90 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-start justify-between gap-3 mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="w-8 h-8 rounded-lg bg-stone-100 group-hover:bg-albero-100 text-stone-700 group-hover:text-albero-600 flex items-center justify-center text-sm transition-colors">
+                    <i class="fa-solid ${dish.icon}"></i>
+                  </span>
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-stone-400 font-mono">${dish.categoryLabel}</span>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-albero-100 text-albero-800 border border-albero-200">
+                  ${dish.badge}
+                </span>
+              </div>
+
+              <h4 class="font-serif font-bold text-lg text-stone-900 group-hover:text-terracota-700 transition-colors">
+                ${dish.title}
+              </h4>
+              <p class="text-xs text-stone-600 mt-1.5 leading-relaxed font-light">
+                ${dish.desc}
+              </p>
+            </div>
+
+            <div class="pt-5 mt-4 border-t border-stone-100 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-stone-400 block font-light">Precio ración</span>
+                <span class="font-mono text-xl font-bold text-stone-900">${dish.price.toFixed(2)} €</span>
+              </div>
+
+              <div class="flex items-center gap-2">
+                ${qtyInComanda > 0 ? `
+                  <div class="flex items-center bg-stone-100 rounded-full p-1 border border-stone-300">
+                    <button onclick="changeQuantity('${dish.id}', -1)" class="w-6 h-6 rounded-full bg-white text-stone-800 flex items-center justify-center hover:bg-stone-200 text-xs font-bold shadow-xs">
+                      -
+                    </button>
+                    <span class="w-7 text-center font-mono font-bold text-xs text-stone-900">${qtyInComanda}</span>
+                    <button onclick="changeQuantity('${dish.id}', 1)" class="w-6 h-6 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-stone-800 text-xs font-bold shadow-xs">
+                      +
+                    </button>
+                  </div>
+                ` : `
+                  <button 
+                    onclick="changeQuantity('${dish.id}', 1)" 
+                    class="px-3.5 py-2 rounded-full bg-stone-900 hover:bg-terracota-600 text-white text-xs font-medium transition-colors flex items-center gap-1.5 shadow-sm"
+                  >
+                    <i class="fa-solid fa-plus text-[10px]"></i> Añadir
+                  </button>
+                `}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Buscador interactivo
+    function handleSearch(val) {
+      searchQuery = val;
+      renderMenu();
+    }
+
+    function resetFilters() {
+      searchQuery = "";
+      document.getElementById('menuSearchInput').value = "";
+      currentCategory = "todos";
+      renderCategoryTabs();
+      renderMenu();
+    }
+
+    function changeQuantity(dishId, delta) {
+      const current = comanda[dishId] || 0;
+      const next = current + delta;
+      
+      if (next <= 0) {
+        delete comanda[dishId];
+      } else {
+        comanda[dishId] = next;
+      }
+
+      updateComandaBadge();
+      renderMenu();
+      renderComandaModal();
+
+      const dish = menuData.find(d => d.id === dishId);
+      if (delta > 0 && dish) {
+        showToast(`Añadido: ${dish.title}`);
+      }
+    }
+
+    function updateComandaBadge() {
+      const badge = document.getElementById("comandaBadge");
+      const totalUnits = Object.values(comanda).reduce((sum, q) => sum + q, 0);
+
+      if (totalUnits > 0) {
+        badge.innerText = totalUnits;
+        badge.classList.remove("hidden");
+      } else {
+        badge.classList.add("hidden");
+      }
+    }
+
+    function renderComandaModal() {
+      const itemsContainer = document.getElementById("comandaItems");
+      const subtotalEl = document.getElementById("comandaSubtotal");
+      const taxEl = document.getElementById("comandaTax");
+      const totalEl = document.getElementById("comandaTotal");
+
+      const entries = Object.entries(comanda);
+
+      if (entries.length === 0) {
+        itemsContainer.innerHTML = `
+          <div class="text-center py-10 text-stone-400">
+            <i class="fa-solid fa-utensils text-3xl mb-2 text-stone-300"></i>
+            <p class="text-sm font-medium">Aún no has seleccionado platos para la comanda.</p>
+            <p class="text-xs text-stone-400 mt-1">Explora la carta y pulsa en "Añadir" para simular tu cuenta.</p>
+          </div>
+        `;
+        subtotalEl.innerText = "0.00 €";
+        taxEl.innerText = "0.00 €";
+        totalEl.innerText = "0.00 €";
+        return;
+      }
+
+      let total = 0;
+
+      itemsContainer.innerHTML = entries.map(([dishId, qty]) => {
+        const dish = menuData.find(d => d.id === dishId);
+        if (!dish) return '';
+        const lineTotal = dish.price * qty;
+        total += lineTotal;
+
+        return `
+          <div class="flex items-center justify-between p-3 rounded-xl bg-stone-50 border border-stone-200">
+            <div class="flex-1 pr-3">
+              <h5 class="text-xs font-bold text-stone-800 leading-tight">${dish.title}</h5>
+              <div class="text-[11px] text-stone-500 font-mono mt-0.5">
+                ${qty} x ${dish.price.toFixed(2)} € = <span class="font-bold text-stone-800">${lineTotal.toFixed(2)} €</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-1.5">
+              <button onclick="changeQuantity('${dish.id}', -1)" class="w-6 h-6 rounded bg-stone-200 hover:bg-stone-300 text-stone-700 flex items-center justify-center text-xs font-bold">
+                -
+              </button>
+              <span class="w-5 text-center font-mono font-bold text-xs">${qty}</span>
+              <button onclick="changeQuantity('${dish.id}', 1)" class="w-6 h-6 rounded bg-stone-900 hover:bg-stone-800 text-white flex items-center justify-center text-xs font-bold">
+                +
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const iva = total * (10 / 110); // I.V.A incluido del 10%
+      const base = total - iva;
+
+      subtotalEl.innerText = base.toFixed(2) + " €";
+      taxEl.innerText = iva.toFixed(2) + " €";
+      totalEl.innerText = total.toFixed(2) + " €";
+    }
+
+    function toggleComandaModal() {
+      const modal = document.getElementById("comandaModal");
+      const isHidden = modal.classList.contains("hidden");
+      if (isHidden) {
+        renderComandaModal();
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      } else {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+    }
+
+    function clearComanda() {
+      comanda = {};
+      updateComandaBadge();
+      renderMenu();
+      renderComandaModal();
+      showToast("Comanda vaciada");
+    }
+
+    // Copiar resumen al portapapeles sin navigator.clipboard restringido
+    function copyComandaSummary() {
+      const entries = Object.entries(comanda);
+      if (entries.length === 0) {
+        showToast("La comanda está vacía");
+        return;
+      }
+
+      let summary = "🍽️ Comanda - Taberna La Alhameña (Granada)\n----------------------------------------\n";
+      let total = 0;
+
+      entries.forEach(([dishId, qty]) => {
+        const dish = menuData.find(d => d.id === dishId);
+        if (dish) {
+          const sub = dish.price * qty;
+          total += sub;
+          summary += `• ${qty}x ${dish.title} - ${sub.toFixed(2)} €\n`;
+        }
+      });
+
+      summary += `----------------------------------------\nTotal estimado: ${total.toFixed(2)} € (IVA inc.)`;
+
+      // Fallback robusto con textarea para cumplir restricciones de iframe
+      const tempTextArea = document.createElement("textarea");
+      tempTextArea.value = summary;
+      tempTextArea.style.position = "fixed";
+      tempTextArea.style.left = "-9999px";
+      document.body.appendChild(tempTextArea);
+      tempTextArea.select();
+      
+      try {
+        document.execCommand("copy");
+        showToast("¡Comanda copiada al portapapeles!");
+      } catch (err) {
+        showToast("No se pudo copiar el texto.");
+      }
+      document.body.removeChild(tempTextArea);
+    }
+
+    // Sistema de notificaciones toast flotante
+    let toastTimeout;
+    function showToast(message) {
+      const toast = document.getElementById("toastNotification");
+      const msgSpan = document.getElementById("toastMessage");
+      msgSpan.innerText = message;
+
+      toast.classList.remove("translate-y-20", "opacity-0");
+      toast.classList.add("translate-y-0", "opacity-100");
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add("translate-y-20", "opacity-0");
+        toast.classList.remove("translate-y-0", "opacity-100");
+      }, 2500);
+    }
+
+    function handleReservationSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('resName').value;
+      const guests = document.getElementById('resGuests').value;
+      const date = document.getElementById('resDate').value;
+      const time = document.getElementById('resTime').value;
+
+      const summaryText = document.getElementById("reservationSummaryText");
+      summaryText.innerHTML = `
+        Gracias <strong>${name}</strong>. Hemos registrado tu reserva para <strong>${guests} comensal(es)</strong> el día <strong>${date}</strong> a las <strong>${time} h</strong>.<br><br>
+        En caso de modificación, por favor llámanos al 958 22 45 78. ¡Te esperamos en Calle San Matías!
+      `;
+
+      const modal = document.getElementById("confirmReservationModal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+
+      document.getElementById('reservationForm').reset();
+      document.getElementById('resDate').value = today;
+    }
+
+    function closeReservationModal() {
+      const modal = document.getElementById("confirmReservationModal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    // Toggle Mobile Menu
+    function toggleMobileMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.classList.toggle("hidden");
+    }
+
+    // Inicializar vistas en carga
+    renderCategoryTabs();
+    renderMenu();
+  </script>
+</body>
+</html>
