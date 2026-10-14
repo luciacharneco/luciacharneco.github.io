@@ -3,51 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Taberna La Alhameña | Cocina Andaluza y Tradición Granadina</title>
+  <title>Veterinaria Luz | Centro Clínico Avanzado & Seguro de Salud Animal</title>
   
-  <!-- Google Fonts: Playfair Display & Inter -->
+  <!-- Google Fonts: Plus Jakarta Sans & Cormorant Garamond for editorial touches -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+          },
           colors: {
-            albero: {
-              50: '#fdfbf5',
-              100: '#fbf5e6',
-              200: '#f6e7c1',
-              400: '#e7bf67',
-              500: '#d9a738',
-              600: '#b88426',
-              800: '#754f15'
-            },
-            terracota: {
-              500: '#c85a32',
-              600: '#ab431e',
-              700: '#8a3314'
-            },
-            oliva: {
-              700: '#485635',
-              800: '#344026'
-            },
-            nazari: {
-              800: '#143642',
-              900: '#0b2028'
+            luz: {
+              50: '#faf5ff',
+              100: '#f3e8ff',
+              200: '#e9d5ff',
+              300: '#d8b4fe',
+              400: '#c084fc',
+              500: '#a855f7',
+              600: '#9333ea',
+              700: '#7e22ce',
+              800: '#6b21a8',
+              900: '#581c87',
+              950: '#350b57',
+              deep: '#1c0631',
+              card: '#240b3f',
+              glow: '#c084fc'
             }
           },
-          fontFamily: {
-            serif: ['"Playfair Display"', 'Georgia', 'serif'],
-            title: ['"Cinzel"', 'serif'],
-            sans: ['"Inter"', 'sans-serif']
+          boxShadow: {
+            'purple-glow': '0 0 35px -5px rgba(168, 85, 247, 0.35)',
+            'purple-intense': '0 0 50px -10px rgba(147, 51, 234, 0.55)',
+            'card-soft': '0 20px 40px -15px rgba(53, 11, 87, 0.08)'
           }
         }
       }
@@ -55,1029 +53,1389 @@
   </script>
 
   <style>
-    /* Efecto sutil de azulejo andaluz */
-    .bg-pattern {
-      background-color: #faf7f2;
-      background-image: radial-gradient(#d9a738 0.65px, transparent 0.65px), radial-gradient(#ab431e 0.65px, #faf7f2 0.65px);
-      background-size: 26px 26px;
-      background-position: 0 0, 13px 13px;
+    /* Efectos y gradientes refinados */
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
-    .custom-scrollbar::-webkit-scrollbar {
-      width: 6px;
+    .gradient-hero {
+      background: radial-gradient(circle at 80% 20%, rgba(192, 132, 252, 0.18) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(147, 51, 234, 0.12) 0%, transparent 45%),
+                  #fcfaff;
     }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-      background-color: #d9a738;
-      border-radius: 9999px;
+    .gradient-dark-purple {
+      background: linear-gradient(135deg, #1c0631 0%, #2f0b54 50%, #461278 100%);
+    }
+    .gradient-vibrant {
+      background: linear-gradient(135deg, #7e22ce 0%, #9333ea 50%, #c084fc 100%);
+    }
+    .gradient-gold-tag {
+      background: linear-gradient(135deg, #fef08a 0%, #facc15 100%);
+    }
+    .badge-insurance {
+      background: linear-gradient(90deg, #9333ea 0%, #c084fc 100%);
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #4c1d95 0%, #9333ea 50%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .sparkle-icon {
+      filter: drop-shadow(0 0 8px rgba(192, 132, 252, 0.8));
+    }
+    /* Estilo de impresión para el carnet */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #printableCard, #printableCard * {
+        visibility: visible;
+      }
+      #printableCard {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
     }
   </style>
 </head>
-<body class="bg-pattern text-stone-800 font-sans antialiased min-h-screen flex flex-col selection:bg-albero-200 selection:text-terracota-700">
+<body class="bg-luz-50/40 text-slate-800 antialiased selection:bg-luz-600 selection:text-white font-sans">
 
-  <header class="sticky top-0 z-40 bg-stone-900/95 backdrop-blur-md text-stone-100 border-b border-albero-500/20 shadow-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        
-        <!-- Brand / Logo -->
-        <a href="#inicio" class="flex items-center gap-3 group">
-          <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-albero-600 via-albero-400 to-terracota-500 flex items-center justify-center text-stone-900 shadow-md group-hover:scale-105 transition-transform duration-300">
-            <i class="fa-solid fa-utensils text-lg"></i>
-          </div>
-          <div>
-            <span class="block font-title tracking-wider text-xl font-bold text-albero-400 group-hover:text-albero-300 transition-colors">LA ALHAMEÑA</span>
-            <span class="block text-xs uppercase tracking-widest text-stone-300 font-serif">Granada · Cocina Andaluza</span>
-          </div>
+  <!-- ================= TOP BAR DE URGENCIAS ================= -->
+  <div class="bg-luz-deep text-white text-xs sm:text-sm py-2 px-4 border-b border-luz-900/60">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-2.5">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-red-500/20 text-red-300 border border-red-500/30">
+          <span class="w-2 h-2 rounded-full bg-red-400 animate-ping"></span>
+          URGENCIAS UCI 24H
+        </span>
+        <span class="hidden md:inline text-luz-200 text-xs">Veterinario y cirujano presencial todos los días del año</span>
+      </div>
+      <div class="flex items-center gap-4 text-xs font-semibold">
+        <a href="tel:+34900800900" class="flex items-center gap-1.5 text-luz-300 hover:text-white transition">
+          <i class="fa-solid fa-phone-volume text-luz-400"></i> +34 900 800 900
         </a>
-
-        <!-- Desktop Navigation Links -->
-        <nav class="hidden md:flex items-center space-x-7 text-sm font-medium">
-          <a href="#inicio" class="hover:text-albero-400 transition-colors">Inicio</a>
-          <a href="#carta" class="hover:text-albero-400 transition-colors">Nuestra Carta</a>
-          <a href="#filosofia" class="hover:text-albero-400 transition-colors">Filosofía</a>
-          <a href="#reservas" class="hover:text-albero-400 transition-colors">Reservar Mesa</a>
-          <a href="#contacto" class="hover:text-albero-400 transition-colors">Ubicación</a>
-        </nav>
-
-        <!-- Right Action Button: Comanda / Carrito Simulator -->
-        <div class="flex items-center gap-3">
-          <button onclick="toggleComandaModal()" class="relative p-2.5 rounded-full bg-stone-800 hover:bg-stone-700 text-albero-300 transition-all border border-albero-500/30 flex items-center justify-center" title="Ver mi Comanda">
-            <i class="fa-solid fa-receipt text-lg"></i>
-            <span id="comandaBadge" class="absolute -top-1.5 -right-1.5 bg-terracota-500 text-white text-[11px] font-bold rounded-full w-5 h-5 flex items-center justify-center shadow hidden">0</span>
-          </button>
-          
-          <a href="#reservas" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-terracota-600 to-terracota-500 hover:from-terracota-500 hover:to-terracota-600 text-white font-medium px-4 py-2 rounded-full text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-300 transform active:scale-95">
-            <i class="fa-regular fa-calendar-check"></i> Reservar
-          </a>
-
-          <!-- Mobile Hamburger Toggle -->
-          <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="md:hidden p-2 text-stone-300 hover:text-white focus:outline-none" aria-label="Abrir menú">
-            <i class="fa-solid fa-bars text-xl"></i>
-          </button>
-        </div>
+        <span class="text-luz-700">|</span>
+        <span class="text-luz-200 hidden sm:inline"><i class="fa-solid fa-location-dot text-luz-400 mr-1"></i> Calle Gran Vía 124, Madrid</span>
       </div>
     </div>
+  </div>
 
-    <!-- Mobile Dropdown Navigation -->
-    <div id="mobileMenu" class="hidden md:hidden bg-stone-950/95 border-b border-stone-800 px-4 pt-3 pb-6 space-y-3">
-      <a href="#inicio" onclick="toggleMobileMenu()" class="block text-stone-200 hover:text-albero-400 font-medium py-2">Inicio</a>
-      <a href="#carta" onclick="toggleMobileMenu()" class="block text-stone-200 hover:text-albero-400 font-medium py-2">Nuestra Carta</a>
-      <a href="#filosofia" onclick="toggleMobileMenu()" class="block text-stone-200 hover:text-albero-400 font-medium py-2">Filosofía</a>
-      <a href="#reservas" onclick="toggleMobileMenu()" class="block text-stone-200 hover:text-albero-400 font-medium py-2">Reservar Mesa</a>
-      <a href="#contacto" onclick="toggleMobileMenu()" class="block text-stone-200 hover:text-albero-400 font-medium py-2">Ubicación y Horarios</a>
+  <!-- ================= BARRA DE NAVEGACIÓN ================= -->
+  <header class="sticky top-0 z-40 glass-nav border-b border-luz-100 shadow-sm transition duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- LOGO: VETERINARIA LUZ -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="relative w-11 h-11 rounded-2xl bg-gradient-to-br from-luz-900 to-luz-700 flex items-center justify-center text-white shadow-purple-glow group-hover:scale-105 transition-transform duration-300">
+          <!-- Huella + Destello/Luz -->
+          <i class="fa-solid fa-paw text-xl text-luz-200"></i>
+          <span class="absolute -top-1 -right-1 text-amber-300 text-sm animate-pulse sparkle-icon">
+            <i class="fa-solid fa-sparkles"></i>
+          </span>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-2xl font-black tracking-tight text-luz-950">Veterinaria <span class="text-luz-600 font-serif italic font-bold">Luz</span></span>
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-luz-500"></span>
+          </div>
+          <span class="block text-[10px] uppercase tracking-widest font-bold text-luz-600 -mt-1">Medicina & Bienestar Integral</span>
+        </div>
+      </a>
+
+      <!-- MENU NAVEGACIÓN DESKTOP -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-700">
+        <a href="#seguro" class="text-luz-700 hover:text-luz-900 flex items-center gap-1.5 group font-bold">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-luz-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-luz-600"></span>
+          </span>
+          Seguro Luz (19,99€)
+        </a>
+        <a href="#comparativa" class="hover:text-luz-600 transition">Comparador Ahorro</a>
+        <a href="#especialidades" class="hover:text-luz-600 transition">Especialidades</a>
+        <a href="#urgencias" class="hover:text-luz-600 transition">Urgencias 24h</a>
+        <a href="#opiniones" class="hover:text-luz-600 transition">Comunidad</a>
+      </nav>
+
+      <!-- BOTONES DESTACADOS -->
+      <div class="hidden sm:flex items-center gap-3">
+        <a href="#pedir-cita" class="px-4 py-2.5 rounded-xl border border-luz-300 text-luz-800 font-semibold text-xs hover:bg-luz-100/60 transition">
+          <i class="fa-regular fa-calendar mr-1 text-luz-600"></i> Pedir Cita
+        </a>
+        <button onclick="openSubscriptionModal()" class="px-5 py-2.5 rounded-xl gradient-vibrant text-white font-bold text-xs shadow-purple-glow hover:shadow-purple-intense hover:scale-[1.02] transition duration-300 flex items-center gap-2">
+          <i class="fa-solid fa-shield-halved"></i> Contratar Seguro (19,99€/mes)
+        </button>
+      </div>
+
+      <!-- BOTÓN MÓVIL HAMBURGUESA -->
+      <button id="mobileMenuToggle" aria-label="Abrir Menú" class="lg:hidden p-2 rounded-xl bg-luz-100 text-luz-900 hover:bg-luz-200 transition">
+        <i class="fa-solid fa-bars-staggered text-lg"></i>
+      </button>
+    </div>
+
+    <!-- MENÚ MÓVIL -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-white/95 border-b border-luz-200 px-6 py-6 space-y-4 shadow-xl">
+      <a href="#seguro" class="mobile-item block text-base font-bold text-luz-700">Seguro de Salud Animal (19,99€)</a>
+      <a href="#comparativa" class="mobile-item block text-sm font-semibold text-slate-700">Calculadora de Ahorro</a>
+      <a href="#especialidades" class="mobile-item block text-sm font-semibold text-slate-700">Especialidades Médicas</a>
+      <a href="#urgencias" class="mobile-item block text-sm font-semibold text-slate-700">Hospital & Urgencias 24h</a>
+      <a href="#pedir-cita" class="mobile-item block text-sm font-semibold text-slate-700">Pedir Cita Online</a>
+      <div class="pt-4 flex flex-col gap-2.5">
+        <button onclick="openSubscriptionModal()" class="w-full py-3 rounded-xl gradient-vibrant text-white font-bold text-sm shadow-md">
+          Contratar Seguro Luz (19,99€/mes)
+        </button>
+        <a href="tel:+34900800900" class="w-full text-center py-2.5 rounded-xl bg-red-50 text-red-700 font-bold text-xs border border-red-200">
+          Llamada Urgencias 24h
+        </a>
+      </div>
     </div>
   </header>
 
-  <section id="inicio" class="relative overflow-hidden bg-gradient-to-b from-stone-900 via-stone-900/90 to-stone-800 text-white py-20 lg:py-28">
-    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#d9a738_1px,transparent_1px)] [background-size:16px_16px]"></div>
-    
+  <!-- ================= HERO SECTION ================= -->
+  <section class="relative pt-12 pb-20 lg:pt-20 lg:pb-28 gradient-hero overflow-hidden">
+    <!-- Luces y destellos decorativos -->
+    <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-luz-300/20 rounded-full blur-3xl pointer-events-none"></div>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
         
+        <!-- Texto Hero -->
         <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-albero-500/10 border border-albero-500/30 text-albero-300 text-xs font-semibold tracking-wider uppercase">
-            <i class="fa-solid fa-mortar-pestle"></i> Cocina con Raíz · Granada
+          
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-luz-200 shadow-sm text-xs font-bold text-luz-800">
+            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+            Un nuevo concepto veterinario con tarifa plana de salud
           </div>
-          
-          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-100 leading-tight">
-            El auténtico sabor de <span class="italic text-albero-400">Andalucía</span> en el corazón de Granada.
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.12]">
+            Iluminamos el cuidado de tu mejor amigo <br class="hidden sm:inline"/>
+            <span class="text-gradient font-serif italic">sin sorpresas en tu bolsillo.</span>
           </h1>
-          
-          <p class="text-stone-300 text-base sm:text-lg max-w-2xl font-light leading-relaxed mx-auto lg:mx-0">
-            Homenajeamos la tradición tabernera: cazuelas de barro, embutidos de Trevélez, fritura limpia de la Costa Tropical y la venerada cultura del tapeo granadino, servido con mimo y generosidad.
+
+          <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+            En <strong>Veterinaria Luz</strong> combinamos instalaciones hospitalarias de alta tecnología con nuestro revolucionario <strong>Seguro Animal por 19,99 €/mes</strong>: consultas ilimitadas, urgencias 24h y descuentos de hasta el 50% en intervenciones.
           </p>
 
-          <div class="pt-3 flex flex-wrap gap-4 justify-center lg:justify-start">
-            <a href="#carta" class="px-7 py-3 rounded-full bg-albero-500 hover:bg-albero-400 text-stone-950 font-semibold tracking-wide shadow-lg hover:shadow-albero-500/30 transition-all flex items-center gap-2">
-              <i class="fa-solid fa-book-open"></i> Explorar la Carta
-            </a>
-            <a href="#reservas" class="px-7 py-3 rounded-full border border-stone-500 hover:border-albero-400 text-stone-200 hover:text-albero-300 font-medium transition-all">
-              Mesa para hoy
+          <!-- Tarjeta rápida del seguro en el Hero -->
+          <div class="p-4 sm:p-5 rounded-2xl bg-white/90 border border-luz-200/80 shadow-card-soft backdrop-blur-sm max-w-xl mx-auto lg:mx-0">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div class="flex items-center gap-3 text-left">
+                <div class="w-12 h-12 rounded-xl bg-luz-100 flex items-center justify-center text-luz-700 text-xl font-bold flex-shrink-0">
+                  <i class="fa-solid fa-shield-cat"></i>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm font-black text-luz-950">Seguro Integral Luz</span>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-luz-100 text-luz-800">Sin copagos</span>
+                  </div>
+                  <p class="text-xs text-slate-500">Urgencias 24h + Vacunas + Consultas ilimitadas</p>
+                </div>
+              </div>
+              <div class="text-right sm:text-right flex-shrink-0">
+                <span class="text-2xl font-black text-luz-700">19,99€</span>
+                <span class="text-xs text-slate-500 block -mt-1">/ mes</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botones de Acción -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <button onclick="openSubscriptionModal()" class="w-full sm:w-auto px-7 py-3.5 rounded-xl gradient-vibrant hover:scale-[1.02] text-white font-bold text-sm shadow-purple-glow hover:shadow-purple-intense transition duration-300 flex items-center justify-center gap-2">
+              <i class="fa-solid fa-file-signature"></i> Contratar Seguro por 19,99€
+            </button>
+            <a href="#pedir-cita" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white border border-luz-300 hover:bg-luz-50 text-luz-900 font-bold text-sm transition flex items-center justify-center gap-2">
+              <i class="fa-regular fa-calendar-check text-luz-600"></i> Pedir Cita Médica
             </a>
           </div>
 
-          <!-- Feature badges -->
-          <div class="pt-6 grid grid-cols-3 gap-4 border-t border-stone-800 text-center">
+          <!-- Métricas de Confianza -->
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-luz-200/70 text-center lg:text-left">
             <div>
-              <p class="font-bold text-albero-400 text-xl font-serif">100%</p>
-              <p class="text-stone-400 text-xs">Aceite Virgen Extra</p>
+              <p class="text-2xl font-black text-luz-950">+3.800</p>
+              <p class="text-xs text-slate-500">Mascotas aseguradas</p>
             </div>
             <div>
-              <p class="font-bold text-albero-400 text-xl font-serif">1ª Tapa</p>
-              <p class="text-stone-400 text-xs">Gratis con consumición</p>
+              <p class="text-2xl font-black text-luz-950">0€</p>
+              <p class="text-xs text-slate-500">Copagos en consultas</p>
             </div>
             <div>
-              <p class="font-bold text-albero-400 text-xl font-serif">Km 0</p>
-              <p class="text-stone-400 text-xs">Vega y Alpujarra</p>
+              <p class="text-2xl font-black text-luz-950">365 días</p>
+              <p class="text-xs text-slate-500">Urgencias presenciales</p>
             </div>
           </div>
+
         </div>
 
-        <!-- Hero visual / feature card -->
-        <div class="lg:col-span-5 flex justify-center">
-          <div class="relative w-full max-w-md bg-stone-950/70 border border-stone-800 p-6 rounded-3xl shadow-2xl backdrop-blur-md">
-            <div class="relative rounded-2xl overflow-hidden h-72 bg-stone-800 border border-stone-700/50 mb-6 flex items-center justify-center group">
-              <!-- Decorative stylized dish graphic -->
-              <div class="text-center p-6 space-y-3">
-                <div class="w-20 h-20 mx-auto rounded-full bg-albero-500/20 border border-albero-500/40 flex items-center justify-center text-albero-300 text-3xl">
-                  <i class="fa-solid fa-plate-wheat"></i>
+        <!-- Visual Hero: Imagen de alta calidad + Badge flotante -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            
+            <!-- Marco decorativo púrpura -->
+            <div class="p-3 rounded-3xl gradient-vibrant shadow-purple-intense">
+              <div class="rounded-2xl overflow-hidden relative bg-luz-deep">
+                <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=800&q=80" 
+                     alt="Veterinaria Luz cuidando a un perro con amor" 
+                     class="w-full h-[460px] object-cover opacity-90 hover:scale-105 transition duration-700">
+                
+                <div class="absolute inset-0 bg-gradient-to-t from-luz-deep via-luz-deep/30 to-transparent"></div>
+
+                <!-- Tarjeta Flotante 1: Luz en Urgencias -->
+                <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-luz-200 flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-luz-100 text-luz-600 flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-heart-pulse animate-pulse"></i>
+                  </div>
+                  <div>
+                    <span class="text-[11px] font-bold text-slate-500 block">UCI & Quirófano 24h</span>
+                    <span class="text-xs font-black text-luz-950">Equipo siempre de guardia</span>
+                  </div>
                 </div>
-                <h3 class="font-serif text-xl font-bold text-stone-100">La Tapa del Día</h3>
-                <p class="text-xs text-stone-400 leading-relaxed">
-                  Berenjenas crujientes con miel de caña de Frigiliana & Remojón granadino con bacalao ahumado.
-                </p>
-                <span class="inline-block px-3 py-1 bg-stone-800 text-albero-400 font-mono text-xs rounded-full border border-albero-500/20">
-                  Incluida con tu primer tercio
-                </span>
+
+                <!-- Tarjeta Flotante 2: Carnet Digital -->
+                <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-luz-200">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-xl gradient-vibrant text-white flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-id-card"></i>
+                      </div>
+                      <div>
+                        <p class="text-xs font-extrabold text-luz-950">Póliza Digital Luz Pass</p>
+                        <p class="text-[11px] text-slate-500">Acceso instantáneo desde el móvil</p>
+                      </div>
+                    </div>
+                    <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-[11px] font-extrabold rounded-lg">ACTIVO</span>
+                  </div>
+                </div>
+
               </div>
             </div>
 
-            <!-- Quote badge -->
-            <div class="bg-stone-900/90 rounded-xl p-4 border border-stone-800 flex items-start gap-3">
-              <i class="fa-solid fa-quote-left text-albero-500 mt-1"></i>
-              <p class="text-xs text-stone-300 italic">
-                "En Granada no se come con prisas; se saborea con una copa de vino andaluz y una buena charla."
-              </p>
+            <!-- Destello de fondo -->
+            <div class="absolute -bottom-8 -left-8 w-52 h-52 bg-luz-400/30 rounded-full blur-3xl -z-10"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECCIÓN PROTAGONISTA: SEGURO ANIMAL LUZ (19,99€) ================= -->
+  <section id="seguro" class="py-20 gradient-dark-purple text-white relative overflow-hidden">
+    <!-- Patrón de fondo geométrico sutil -->
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#c084fc_1px,transparent_1px)] [background-size:20px_20px]"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Encabezado Seguro -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="inline-flex items-center gap-2 px-4 py-1 rounded-full text-xs font-extrabold bg-luz-500/20 text-luz-300 border border-luz-400/30 uppercase tracking-widest">
+          <i class="fa-solid fa-sparkles text-amber-300"></i> Cobertura Veterinaria Total
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white mt-4 mb-4">
+          Seguro de Salud Animal Luz
+        </h2>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-2xl bg-white/10 backdrop-blur-md border border-luz-400/40 text-amber-300 font-extrabold text-sm sm:text-base mb-3 shadow-inner">
+          <i class="fa-solid fa-tag"></i> Solo 19,99€ / mes · Sin permanencia · Cancelación libre
+        </div>
+        <p class="text-luz-200 text-base max-w-2xl mx-auto">
+          La tranquilidad que siempre quisiste para tu perro, gato o animal exótico. Olvídate de facturas imprevistas con nuestra póliza veterinaria integral.
+        </p>
+      </div>
+
+      <!-- Tarjeta Principal de Cobertura con Desglose -->
+      <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Tarjeta de Beneficios y Coberturas (Columna Izquierda) -->
+        <div class="lg:col-span-8 bg-luz-card/90 rounded-3xl p-6 sm:p-10 border border-luz-500/40 shadow-purple-glow backdrop-blur-md flex flex-col justify-between">
+          <div>
+            <h3 class="text-2xl font-black text-white mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-list-check text-luz-400"></i> Lo que incluye tu seguro desde el primer minuto:
+            </h3>
+
+            <div class="grid sm:grid-cols-2 gap-5 mb-8">
+              
+              <!-- Beneficio 1 -->
+              <div class="p-4 rounded-2xl bg-white/5 border border-luz-500/20 hover:border-luz-400/50 transition">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-9 h-9 rounded-xl bg-luz-600/50 flex items-center justify-center text-luz-300 font-bold">
+                    <i class="fa-solid fa-truck-medical"></i>
+                  </div>
+                  <h4 class="font-extrabold text-sm text-white">Urgencias 24h Cubiertas</h4>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Atención en triaje, estabilización y guardia presencial a cualquier hora de la noche, domingos y festivos sin recargo.
+                </p>
+              </div>
+
+              <!-- Beneficio 2 -->
+              <div class="p-4 rounded-2xl bg-white/5 border border-luz-500/20 hover:border-luz-400/50 transition">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-9 h-9 rounded-xl bg-luz-600/50 flex items-center justify-center text-luz-300 font-bold">
+                    <i class="fa-solid fa-syringe"></i>
+                  </div>
+                  <h4 class="font-extrabold text-sm text-white">Vacunas & Revisiones Ilimitadas</h4>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Todas las consultas de medicina general gratis y plan vacunal anual completo (Rabia, Polivalente canina o Trivalente felina).
+                </p>
+              </div>
+
+              <!-- Beneficio 3 -->
+              <div class="p-4 rounded-2xl bg-white/5 border border-luz-500/20 hover:border-luz-400/50 transition">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-9 h-9 rounded-xl bg-luz-600/50 flex items-center justify-center text-luz-300 font-bold">
+                    <i class="fa-solid fa-percent"></i>
+                  </div>
+                  <h4 class="font-extrabold text-sm text-white">50% Dto. en Cirugías Complejas</h4>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Mitad de precio en quirófano: traumatología, tejidos blandos, cesáreas y esterilización profiláctica con anestesia inhalatoria.
+                </p>
+              </div>
+
+              <!-- Beneficio 4 -->
+              <div class="p-4 rounded-2xl bg-white/5 border border-luz-500/20 hover:border-luz-400/50 transition">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-9 h-9 rounded-xl bg-luz-600/50 flex items-center justify-center text-luz-300 font-bold">
+                    <i class="fa-solid fa-x-ray"></i>
+                  </div>
+                  <h4 class="font-extrabold text-sm text-white">50% Dto. en Diagnóstico 4K</h4>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Ahorro del 50% en ecografías Doppler, radiografías digitales, citologías y perfiles bioquímicos de sangre en nuestro laboratorio.
+                </p>
+              </div>
+
+              <!-- Beneficio 5 -->
+              <div class="p-4 rounded-2xl bg-white/5 border border-luz-500/20 hover:border-luz-400/50 transition">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-9 h-9 rounded-xl bg-luz-600/50 flex items-center justify-center text-luz-300 font-bold">
+                    <i class="fa-solid fa-shield-virus"></i>
+                  </div>
+                  <h4 class="font-extrabold text-sm text-white">Desparasitaciones Todo el Año</h4>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Tratamientos periódicos internos y pautas profilácticas contra parásitos externos, pulgas y garrapatas.
+                </p>
+              </div>
+
+              <!-- Beneficio 6 -->
+              <div class="p-4 rounded-2xl bg-white/5 border border-luz-500/20 hover:border-luz-400/50 transition">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-9 h-9 rounded-xl bg-luz-600/50 flex items-center justify-center text-luz-300 font-bold">
+                    <i class="fa-solid fa-headset"></i>
+                  </div>
+                  <h4 class="font-extrabold text-sm text-white">Teleconsulta Veterinaria Directa</h4>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Chat médico y videollamada prioritaria con veterinarios colegiados para resolver dudas sin desplazarte innecesariamente.
+                </p>
+              </div>
+
             </div>
           </div>
-        </div>
 
-      </div>
-    </div>
-  </section>
-
-  <section id="carta" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-    
-    <!-- Section Title -->
-    <div class="text-center max-w-3xl mx-auto mb-12">
-      <span class="text-terracota-600 font-semibold uppercase tracking-widest text-xs">Propuesta Gastronómica</span>
-      <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 mt-2 mb-4">
-        Nuestra Carta Tradicional
-      </h2>
-      <div class="w-16 h-1 bg-albero-500 mx-auto rounded-full mb-4"></div>
-      <p class="text-stone-600 text-sm sm:text-base">
-        Precios justos y raciones generosas al estilo de Granada. Añade platos para calcular tu comanda o encargar directamente a mesa.
-      </p>
-    </div>
-
-    <!-- Search & Filter Controls -->
-    <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 bg-white/80 backdrop-blur p-4 rounded-2xl border border-stone-200 shadow-sm">
-      
-      <!-- Category Tabs -->
-      <div class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 custom-scrollbar" id="categoryContainer">
-        <!-- Generados dinámicamente con JS -->
-      </div>
-
-      <!-- Real-time search field -->
-      <div class="relative w-full md:w-72">
-        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-sm"></i>
-        <input 
-          type="text" 
-          id="menuSearchInput" 
-          placeholder="Buscar berenjenas, rabo..." 
-          class="w-full pl-10 pr-4 py-2 text-sm rounded-full bg-stone-50 border border-stone-300 focus:outline-none focus:border-terracota-500 focus:ring-1 focus:ring-terracota-500 transition-all"
-          oninput="handleSearch(this.value)"
-        >
-      </div>
-    </div>
-
-    <!-- Menu Cards Grid -->
-    <div id="menuGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Items injectados por JS -->
-    </div>
-
-    <!-- Empty Results Fallback -->
-    <div id="noResults" class="hidden text-center py-16">
-      <i class="fa-solid fa-bowl-food text-4xl text-stone-300 mb-3"></i>
-      <p class="text-stone-600 font-medium">No se han encontrado platos con ese criterio.</p>
-      <button onclick="resetFilters()" class="mt-3 text-xs text-terracota-600 underline font-semibold">Restablecer filtros</button>
-    </div>
-
-  </section>
-
-  <section id="filosofia" class="bg-stone-900 text-stone-100 py-20 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <div class="bg-stone-800/60 p-8 rounded-2xl border border-stone-700/60 hover:border-albero-500/50 transition-all duration-300">
-          <div class="w-12 h-12 rounded-xl bg-albero-500/20 text-albero-400 flex items-center justify-center text-2xl mb-5">
-            <i class="fa-solid fa-seedling"></i>
-          </div>
-          <h3 class="font-serif text-xl font-bold text-stone-100 mb-2">Despensa de Cercanía</h3>
-          <p class="text-stone-400 text-sm leading-relaxed">
-            Trabajamos con huertas de la Vega Granadina, queserías artesanas de Montefrío y jamón de secadero natural de Trevélez (Sierra Nevada).
-          </p>
-        </div>
-
-        <div class="bg-stone-800/60 p-8 rounded-2xl border border-stone-700/60 hover:border-albero-500/50 transition-all duration-300">
-          <div class="w-12 h-12 rounded-xl bg-terracota-500/20 text-terracota-400 flex items-center justify-center text-2xl mb-5">
-            <i class="fa-solid fa-fire-burner"></i>
-          </div>
-          <h3 class="font-serif text-xl font-bold text-stone-100 mb-2">Guisos a Fuego Lento</h3>
-          <p class="text-stone-400 text-sm leading-relaxed">
-            Nuestros caldos y rabo de toro reducen durante más de cinco horas con vino tinto andaluz, honrando el recetario de nuestras abuelas.
-          </p>
-        </div>
-
-        <div class="bg-stone-800/60 p-8 rounded-2xl border border-stone-700/60 hover:border-albero-500/50 transition-all duration-300">
-          <div class="w-12 h-12 rounded-xl bg-nazari-800 text-sky-300 flex items-center justify-center text-2xl mb-5">
-            <i class="fa-solid fa-wine-glass"></i>
-          </div>
-          <h3 class="font-serif text-xl font-bold text-stone-100 mb-2">La Cultura de la Barra</h3>
-          <p class="text-stone-400 text-sm leading-relaxed">
-            Granada es compartir. Disfruta de la cerveza Alhambra recién tirada, la tapa siempre incluida y el ambiente animado de taberna viva.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="reservas" class="py-16 sm:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-    <div class="bg-white rounded-3xl shadow-xl border border-stone-200/80 overflow-hidden">
-      <div class="grid grid-cols-1 md:grid-cols-12">
-        
-        <!-- Left Banner Info -->
-        <div class="md:col-span-5 bg-gradient-to-br from-terracota-700 via-terracota-600 to-stone-900 text-white p-8 md:p-10 flex flex-col justify-between">
-          <div>
-            <span class="text-albero-300 text-xs font-bold uppercase tracking-widest">Reserva Tu Experiencia</span>
-            <h3 class="font-serif text-3xl font-bold mt-2 mb-4">¿Almorzamos o cenamos juntos?</h3>
-            <p class="text-stone-200 text-sm leading-relaxed mb-6 font-light">
-              Recomendamos reservar con antelación, especialmente para noches de fin de semana y grupos.
+          <div class="p-4 rounded-2xl bg-luz-900/60 border border-luz-500/30 flex items-center gap-3">
+            <i class="fa-solid fa-shield-cat text-2xl text-amber-300"></i>
+            <p class="text-xs text-luz-200">
+              Válido para <strong>perros, gatos y animales exóticos</strong> de cualquier edad o raza. Sin periodo de carencia para revisiones y urgencias.
             </p>
+          </div>
+        </div>
 
-            <ul class="space-y-3 text-xs text-stone-200">
+        <!-- Tarjeta de Contratación / Resumen Precio (Columna Derecha) -->
+        <div class="lg:col-span-4 bg-gradient-to-b from-luz-900 to-luz-deep rounded-3xl p-6 sm:p-8 border-2 border-luz-400 shadow-purple-intense flex flex-col justify-between relative">
+          
+          <div class="absolute -top-3.5 right-6 px-3.5 py-1 rounded-full text-xs font-black bg-amber-400 text-luz-950 uppercase tracking-wider shadow-md">
+            MÁS POPULAR
+          </div>
+
+          <div>
+            <span class="text-xs uppercase font-extrabold text-luz-300 tracking-wider">Plan Integral Universal</span>
+            <h3 class="text-2xl font-black text-white mt-1">Póliza Salud Luz</h3>
+            
+            <div class="my-6 pb-6 border-b border-luz-500/30">
+              <div class="flex items-baseline gap-1">
+                <span class="text-5xl sm:text-6xl font-black text-white">19,99</span>
+                <span class="text-xl font-bold text-luz-300">€</span>
+                <span class="text-xs text-luz-200 font-medium">/ mes</span>
+              </div>
+              <p class="text-xs text-emerald-400 font-bold mt-2 flex items-center gap-1.5">
+                <i class="fa-solid fa-circle-check"></i> Sin cuota de alta · Tarifa congelada para siempre
+              </p>
+            </div>
+
+            <!-- Resumen rápido en checks -->
+            <ul class="space-y-3 text-xs text-slate-200 mb-8">
               <li class="flex items-center gap-2">
-                <i class="fa-solid fa-clock text-albero-400"></i> Almuerzos: 13:00 - 16:30 h
+                <i class="fa-solid fa-check text-luz-400"></i> Urgencias hospitalarias 24h cubiertas
               </li>
               <li class="flex items-center gap-2">
-                <i class="fa-solid fa-moon text-albero-400"></i> Cenas: 20:00 - 23:30 h
+                <i class="fa-solid fa-check text-luz-400"></i> Consultas generales presenciales ilimitadas
               </li>
               <li class="flex items-center gap-2">
-                <i class="fa-solid fa-phone text-albero-400"></i> +34 958 22 45 78
+                <i class="fa-solid fa-check text-luz-400"></i> Plan vacunal anual completo incluido
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-luz-400"></i> 50% descuento en quirófano y diagnóstico
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-luz-400"></i> Carnet digital para el móvil (Luz Pass)
               </li>
             </ul>
           </div>
 
-          <div class="mt-8 pt-6 border-t border-white/20 text-[11px] text-stone-300">
-            * Para grupos mayores de 8 comensales, contáctanos directamente por teléfono.
+          <div>
+            <button onclick="openSubscriptionModal()" class="w-full py-4 rounded-xl gradient-vibrant hover:opacity-95 text-white font-extrabold text-sm tracking-wide shadow-purple-glow hover:scale-[1.02] transition duration-300 flex items-center justify-center gap-2">
+              <i class="fa-solid fa-file-signature text-base"></i> Contratar Ahora por 19,99€
+            </button>
+            <p class="text-center text-[11px] text-luz-300/80 mt-3">
+              Proceso 100% online en menos de 2 minutos.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= COMPARADOR / CALCULADORA DE AHORRO ================= -->
+  <section id="comparativa" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold tracking-widest uppercase text-luz-700 bg-luz-100 px-3.5 py-1 rounded-full">
+          Transparencia Económica
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-4">
+          ¿Cuánto ahorras realmente con el Seguro Luz?
+        </h2>
+        <p class="text-slate-600 text-base">
+          Compara el coste anual de tener a tu mascota protegida frente a abonar los servicios estándar por separado.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Tabla Comparativa -->
+        <div class="lg:col-span-8 overflow-hidden rounded-3xl border border-luz-200 shadow-card-soft bg-white">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-luz-950 text-white text-xs uppercase font-bold tracking-wider">
+                <tr>
+                  <th class="p-4 sm:p-5">Servicio / Acto Clínico</th>
+                  <th class="p-4 sm:p-5 text-center text-slate-400">Tarifa Sin Seguro</th>
+                  <th class="p-4 sm:p-5 text-center bg-luz-800 text-luz-200">Con Seguro Luz (19,99€/mes)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-luz-100 font-medium text-slate-700">
+                <tr>
+                  <td class="p-4 sm:p-5">
+                    <span class="font-bold text-slate-900 block">Consultas generales (4 al año aprox.)</span>
+                    <span class="text-xs text-slate-500">Revisiones periódicas y seguimiento</span>
+                  </td>
+                  <td class="p-4 sm:p-5 text-center text-slate-500 line-through">160 € (40€/c.u.)</td>
+                  <td class="p-4 sm:p-5 text-center font-bold text-emerald-600 bg-luz-50/50">0 € (ILIMITADAS)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5">
+                    <span class="font-bold text-slate-900 block">Plan de Vacunación Anual</span>
+                    <span class="text-xs text-slate-500">Rabia + Polivalente completa</span>
+                  </td>
+                  <td class="p-4 sm:p-5 text-center text-slate-500 line-through">75 €</td>
+                  <td class="p-4 sm:p-5 text-center font-bold text-emerald-600 bg-luz-50/50">0 € (INCLUIDO)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5">
+                    <span class="font-bold text-slate-900 block">1 Urgencia Nocturna o Fin de Semana</span>
+                    <span class="text-xs text-slate-500">Triaje y estabilización veterinaria</span>
+                  </td>
+                  <td class="p-4 sm:p-5 text-center text-slate-500 line-through">120 €</td>
+                  <td class="p-4 sm:p-5 text-center font-bold text-emerald-600 bg-luz-50/50">0 € (CUBIERTO)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5">
+                    <span class="font-bold text-slate-900 block">Desparasitación preventiva anual</span>
+                    <span class="text-xs text-slate-500">Interna trimestral pautada</span>
+                  </td>
+                  <td class="p-4 sm:p-5 text-center text-slate-500 line-through">48 €</td>
+                  <td class="p-4 sm:p-5 text-center font-bold text-emerald-600 bg-luz-50/50">0 € (INCLUIDO)</td>
+                </tr>
+                <tr>
+                  <td class="p-4 sm:p-5">
+                    <span class="font-bold text-slate-900 block">Ecografía o Prueba de Imagen</span>
+                    <span class="text-xs text-slate-500">Diagnóstico abdominal o torácico</span>
+                  </td>
+                  <td class="p-4 sm:p-5 text-center text-slate-500">95 €</td>
+                  <td class="p-4 sm:p-5 text-center font-bold text-luz-700 bg-luz-50/50">47,50 € (50% DTO.)</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
-        <!-- Form fields -->
-        <div class="md:col-span-7 p-8 md:p-10">
-          <form id="reservationForm" onsubmit="handleReservationSubmit(event)" class="space-y-4">
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-semibold text-stone-700 mb-1" for="resName">Nombre completo *</label>
-                <input required type="text" id="resName" placeholder="Ej. Lucía Martínez" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:border-terracota-600 focus:ring-1 focus:ring-terracota-600">
-              </div>
-
-              <div>
-                <label class="block text-xs font-semibold text-stone-700 mb-1" for="resPhone">Teléfono de contacto *</label>
-                <input required type="tel" id="resPhone" placeholder="600 000 000" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:border-terracota-600 focus:ring-1 focus:ring-terracota-600">
-              </div>
+        <!-- Tarjeta de Ahorro Neto Anual -->
+        <div class="lg:col-span-4 bg-gradient-to-br from-luz-100 to-white p-6 sm:p-8 rounded-3xl border border-luz-300 shadow-card-soft text-center">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-luz-600 text-white flex items-center justify-center text-2xl font-bold shadow-purple-glow mb-4">
+            <i class="fa-solid fa-piggy-bank"></i>
+          </div>
+          <span class="text-xs uppercase font-extrabold text-luz-700 tracking-wider">Estimación de Ahorro Anual</span>
+          <h3 class="text-3xl font-black text-luz-950 mt-1 mb-2">Más de 250 € al año</h3>
+          <p class="text-xs text-slate-600 mb-6 leading-relaxed">
+            Incluso sin cirugías imprevistas, solo en prevención y urgencias cubiertas el seguro amortiza su coste desde el tercer mes.
+          </p>
+          <div class="p-4 rounded-xl bg-white border border-luz-200 text-xs text-left space-y-2 mb-6">
+            <div class="flex justify-between">
+              <span>Coste sin seguro:</span>
+              <span class="font-bold text-red-600">498,00 €</span>
             </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div>
-                <label class="block text-xs font-semibold text-stone-700 mb-1" for="resDate">Fecha *</label>
-                <input required type="date" id="resDate" class="w-full px-3 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:border-terracota-600 focus:ring-1 focus:ring-terracota-600">
-              </div>
-
-              <div>
-                <label class="block text-xs font-semibold text-stone-700 mb-1" for="resTime">Turno / Hora *</label>
-                <select required id="resTime" class="w-full px-3 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:border-terracota-600 focus:ring-1 focus:ring-terracota-600 bg-white">
-                  <option value="13:30">13:30 (Comida)</option>
-                  <option value="14:15">14:15 (Comida)</option>
-                  <option value="15:00">15:00 (Comida)</option>
-                  <option value="20:30">20:30 (Cena)</option>
-                  <option value="21:30">21:30 (Cena)</option>
-                  <option value="22:15">22:15 (Cena)</option>
-                </select>
-              </div>
-
-              <div>
-                <label class="block text-xs font-semibold text-stone-700 mb-1" for="resGuests">Personas *</label>
-                <select required id="resGuests" class="w-full px-3 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:border-terracota-600 focus:ring-1 focus:ring-terracota-600 bg-white">
-                  <option value="1">1 Persona</option>
-                  <option value="2" selected>2 Personas</option>
-                  <option value="3">3 Personas</option>
-                  <option value="4">4 Personas</option>
-                  <option value="5">5 Personas</option>
-                  <option value="6">6 Personas</option>
-                  <option value="7">7 Personas</option>
-                  <option value="8">8 Personas</option>
-                </select>
-              </div>
+            <div class="flex justify-between">
+              <span>Coste anual Seguro Luz (19,99€x12):</span>
+              <span class="font-bold text-luz-700">239,88 €</span>
             </div>
-
-            <div>
-              <label class="block text-xs font-semibold text-stone-700 mb-1" for="resNotes">Peticiones especiales o alergias</label>
-              <textarea id="resNotes" rows="2" placeholder="Ej. Mesa en terraza o trona para bebé, alérgico a los frutos secos..." class="w-full px-3.5 py-2 text-sm rounded-xl border border-stone-300 focus:outline-none focus:border-terracota-600 focus:ring-1 focus:ring-terracota-600"></textarea>
+            <div class="flex justify-between pt-2 border-t border-luz-100 font-extrabold text-emerald-700">
+              <span>Tu ahorro directo:</span>
+              <span>+258,12 €</span>
             </div>
-
-            <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-terracota-600 hover:bg-terracota-500 text-white font-semibold text-sm tracking-wide shadow-md hover:shadow-lg transition-all duration-200">
-              Confirmar Solicitud de Reserva
-            </button>
-          </form>
+          </div>
+          <button onclick="openSubscriptionModal()" class="w-full py-3 rounded-xl gradient-vibrant text-white font-bold text-xs shadow-md hover:shadow-purple-glow transition">
+            Dar de alta a mi mascota (19,99€)
+          </button>
         </div>
 
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= ESPECIALIDADES MÉDICAS AVANZADAS ================= -->
+  <section id="especialidades" class="py-20 bg-luz-50/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold tracking-widest uppercase text-luz-700 bg-white px-3.5 py-1 rounded-full border border-luz-200">
+          Excelencia Clínica
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-4">
+          Especialidades Veterinarias
+        </h2>
+        <p class="text-slate-600 text-base">
+          Medicina basada en la evidencia científica, con instalaciones especializadas y respeto riguroso por las emociones de cada paciente.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Especialidad 1 -->
+        <div class="bg-white rounded-3xl p-7 border border-luz-200/80 shadow-card-soft hover:shadow-purple-glow hover:-translate-y-1 transition duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-luz-100 text-luz-700 flex items-center justify-center text-2xl font-bold mb-5">
+            <i class="fa-solid fa-cat"></i>
+          </div>
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-xl font-bold text-slate-900">Área Felina Fear Free</h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-100 text-purple-800">Cat Friendly Gold</span>
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">
+            Circuito exclusivo para gatos sin ruidos ni olores de canes, salas con estanterías a media altura y feromonas constantes para evitar el estrés.
+          </p>
+          <ul class="text-xs text-slate-500 space-y-1.5 font-medium">
+            <li><i class="fa-solid fa-check text-luz-600 mr-1.5"></i> Espera y consulta 100% aisladas</li>
+            <li><i class="fa-solid fa-check text-luz-600 mr-1.5"></i> Manejo respetuoso con toallas tibias</li>
+          </ul>
+        </div>
+
+        <!-- Especialidad 2 -->
+        <div class="bg-white rounded-3xl p-7 border border-luz-200/80 shadow-card-soft hover:shadow-purple-glow hover:-translate-y-1 transition duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-luz-100 text-luz-700 flex items-center justify-center text-2xl font-bold mb-5">
+            <i class="fa-solid fa-microscope"></i>
+          </div>
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-xl font-bold text-slate-900">Cirugía & Quirófano 4K</h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">Presión Positiva</span>
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">
+            Cirugía mínimamente invasiva por laparoscopia, traumatología con fijación rígida y monitorización multiparamétrica con sevoflurano.
+          </p>
+          <ul class="text-xs text-slate-500 space-y-1.5 font-medium">
+            <li><i class="fa-solid fa-check text-luz-600 mr-1.5"></i> Recuperación monitorizada en UCI</li>
+            <li><i class="fa-solid fa-check text-luz-600 mr-1.5"></i> 50% de descuento con Seguro Luz</li>
+          </ul>
+        </div>
+
+        <!-- Especialidad 3 -->
+        <div class="bg-white rounded-3xl p-7 border border-luz-200/80 shadow-card-soft hover:shadow-purple-glow hover:-translate-y-1 transition duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-luz-100 text-luz-700 flex items-center justify-center text-2xl font-bold mb-5">
+            <i class="fa-solid fa-wave-square"></i>
+          </div>
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-xl font-bold text-slate-900">Diagnóstico por Imagen</h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800">Digital Directo</span>
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">
+            Ecografía abdominal de alta resolución, ecocardiografía Doppler color y radiología digital inmediata con emisión ultrabaja de radiación.
+          </p>
+          <ul class="text-xs text-slate-500 space-y-1.5 font-medium">
+            <li><i class="fa-solid fa-check text-luz-600 mr-1.5"></i> Informes diagnósticos en 30 minutos</li>
+            <li><i class="fa-solid fa-check text-luz-600 mr-1.5"></i> Laboratorio en clínica para analíticas</li>
+          </ul>
+        </div>
+
+        <!-- Especialidad 4 -->
+        <div class="bg-white rounded-3xl p-7 border border-luz-200/80 shadow-card-soft hover:shadow-purple-glow hover:-translate-y-1 transition duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-luz-100 text-luz-700 flex items-center justify-center text-2xl font-bold mb-5">
+            <i class="fa-solid fa-dove"></i>
+          </div>
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-xl font-bold text-slate-900">Animales Exóticos</h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">Especialista Acreditado</span>
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">
+            Cuidados médicos y quirúrgicos para conejos, roedores, aves y reptiles. Instrumental adaptado y microanestesia de precisión.
+          </p>
+          <ul class="text-xs text-slate-500 space-y-1.5 font-medium">
+            <li><i class="fa-solid fa-check text-luz-600 mr-1.5"></i> Odontología y corte de limas conejos</li>
+            <li><i class="fa-solid fa-check text-luz-600 mr-1.5"></i> Incubadora UCI con oxigenoterapia</li>
+          </ul>
+        </div>
+
+        <!-- Especialidad 5 -->
+        <div class="bg-white rounded-3xl p-7 border border-luz-200/80 shadow-card-soft hover:shadow-purple-glow hover:-translate-y-1 transition duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-luz-100 text-luz-700 flex items-center justify-center text-2xl font-bold mb-5">
+            <i class="fa-solid fa-tooth"></i>
+          </div>
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-xl font-bold text-slate-900">Odontología Digital</h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-800">Cero Dolor</span>
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">
+            Limpieza bucodental por ultrasonidos, pulido con flúor, radiografía intraoral digital y exodoncias reconstructivas.
+          </p>
+          <ul class="text-xs text-slate-500 space-y-1.5 font-medium">
+            <li><i class="fa-solid fa-check text-luz-600 mr-1.5"></i> Prevención de placa y enfermedad periodontal</li>
+            <li><i class="fa-solid fa-check text-luz-600 mr-1.5"></i> Intubación endotraqueal segura</li>
+          </ul>
+        </div>
+
+        <!-- Especialidad 6 -->
+        <div class="bg-white rounded-3xl p-7 border border-luz-200/80 shadow-card-soft hover:shadow-purple-glow hover:-translate-y-1 transition duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-luz-100 text-luz-700 flex items-center justify-center text-2xl font-bold mb-5">
+            <i class="fa-solid fa-bed-pulse"></i>
+          </div>
+          <div class="flex items-center gap-2 mb-2">
+            <h3 class="text-xl font-bold text-slate-900">UCI & Hospitalización 24h</h3>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-100 text-red-800">Vigilancia Médica</span>
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">
+            Habitaciones atérmicas, bombas de perfusión para fluidoterapia continua y acompañamiento enfermero las 24 horas del día.
+          </p>
+          <ul class="text-xs text-slate-500 space-y-1.5 font-medium">
+            <li><i class="fa-solid fa-check text-luz-600 mr-1.5"></i> Visitas diarias autorizadas para familias</li>
+            <li><i class="fa-solid fa-check text-luz-600 mr-1.5"></i> Cobertura total en caso de urgencias</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FORMULARIO PARA PEDIR CITA MÉDICA ================= -->
+  <section id="pedir-cita" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold tracking-widest uppercase text-luz-700 bg-luz-100 px-3.5 py-1 rounded-full">
+          Atención Presencial
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-2">
+          Agenda una Cita en Veterinaria Luz
+        </h2>
+        <p class="text-slate-600 text-sm">
+          ¿No tienes seguro aún? No te preocupes, también atendemos consultas generales, revisiones o valoraciones quirúrgicas.
+        </p>
+      </div>
+
+      <div class="p-6 sm:p-10 rounded-3xl bg-luz-50/70 border border-luz-200 shadow-card-soft">
+        
+        <form id="appointmentForm" onsubmit="handleAppointment(event)" class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Nombre de la Mascota *</label>
+              <input type="text" id="appPetName" required placeholder="Ej: Luna, Thor, Coco..." 
+                     class="w-full px-4 py-3 rounded-xl bg-white border border-luz-200 focus:outline-none focus:border-luz-600 text-sm transition">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Especie *</label>
+              <select id="appSpecies" required class="w-full px-4 py-3 rounded-xl bg-white border border-luz-200 focus:outline-none focus:border-luz-600 text-sm transition">
+                <option value="Perro">Perro</option>
+                <option value="Gato">Gato (Cat Friendly)</option>
+                <option value="Conejo / Roedor">Conejo o Roedor</option>
+                <option value="Ave / Reptil">Ave o Reptil</option>
+                <option value="Otro">Otro exótico</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Motivo de Consulta *</label>
+              <select id="appReason" required class="w-full px-4 py-3 rounded-xl bg-white border border-luz-200 focus:outline-none focus:border-luz-600 text-sm transition">
+                <option value="Revisión general / Vacunación">Revisión Preventiva & Vacunas</option>
+                <option value="Consulta por enfermedad / síntomas">Síntomas o Malestar</option>
+                <option value="Especialidad médica o quirúrgica">Especialidad o Cirugía</option>
+                <option value="Revisión Odontológica">Revisión Dental</option>
+                <option value="Información Seguro 19,99€">Alta Seguro Luz (19,99€)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Fecha Deseada *</label>
+              <input type="date" id="appDate" required class="w-full px-4 py-3 rounded-xl bg-white border border-luz-200 focus:outline-none focus:border-luz-600 text-sm transition">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Franja Horaria *</label>
+              <select id="appTime" required class="w-full px-4 py-3 rounded-xl bg-white border border-luz-200 focus:outline-none focus:border-luz-600 text-sm transition">
+                <option value="Mañana (09:00 - 13:00)">Mañana (09:00 - 13:00)</option>
+                <option value="Mediodía (13:00 - 16:30)">Mediodía (13:00 - 16:30)</option>
+                <option value="Tarde (16:30 - 20:30)">Tarde (16:30 - 20:30)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 border-t border-luz-200/60">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Tu Nombre y Apellidos *</label>
+              <input type="text" id="appOwnerName" required placeholder="Nombre completo" 
+                     class="w-full px-4 py-3 rounded-xl bg-white border border-luz-200 focus:outline-none focus:border-luz-600 text-sm transition">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Teléfono Móvil (WhatsApp) *</label>
+              <input type="tel" id="appPhone" required placeholder="+34 600 000 000" 
+                     class="w-full px-4 py-3 rounded-xl bg-white border border-luz-200 focus:outline-none focus:border-luz-600 text-sm transition">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Correo Electrónico *</label>
+              <input type="email" id="appEmail" required placeholder="tuemail@ejemplo.com" 
+                     class="w-full px-4 py-3 rounded-xl bg-white border border-luz-200 focus:outline-none focus:border-luz-600 text-sm transition">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Comentarios o síntomas relevantes (Opcional)</label>
+            <textarea id="appNotes" rows="2" placeholder="Describe brevemente el motivo o si tu mascota requiere manejo especial..." 
+                      class="w-full px-4 py-3 rounded-xl bg-white border border-luz-200 focus:outline-none focus:border-luz-600 text-sm transition"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-4 rounded-xl gradient-vibrant text-white font-extrabold text-sm shadow-purple-glow hover:shadow-purple-intense transition duration-300 flex items-center justify-center gap-2">
+            <i class="fa-solid fa-calendar-check"></i> Enviar Solicitud de Cita
+          </button>
+        </form>
+
+        <!-- Mensaje de éxito de la cita -->
+        <div id="appointmentSuccess" class="hidden mt-6 p-6 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-950">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-xl flex-shrink-0">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <div>
+              <h4 class="font-extrabold text-base text-emerald-900">¡Cita Solicitada con Éxito!</h4>
+              <p class="text-xs text-emerald-800" id="appointmentSuccessMsg">
+                Nos pondremos en contacto contigo vía WhatsApp o llamada para confirmar la hora exacta.
+              </p>
+            </div>
+          </div>
+          <button onclick="resetAppointmentForm()" class="mt-3 text-xs font-bold text-emerald-700 underline hover:text-emerald-900">
+            Hacer otra reserva
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= BANNER URGENCIAS 24H ================= -->
+  <section id="urgencias" class="py-16 gradient-dark-purple text-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="p-8 sm:p-12 rounded-3xl bg-white/5 border border-luz-400/30 flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div class="space-y-3 text-center lg:text-left">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-red-500/20 text-red-300 border border-red-500/40">
+            <span class="w-2 h-2 rounded-full bg-red-400 animate-ping"></span> SERVICIO PERMANENTE
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black">
+            ¿Una Emergencia Crítica con tu Mascota?
+          </h2>
+          <p class="text-sm text-luz-200 max-w-xl">
+            Torsión gástrica, intoxicaciones, dificultades respiratorias, traumatismos o problemas urinarios felinos. Nuestro quirófano e intensivistas están activos en este instante.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
+          <div class="text-center sm:text-right">
+            <span class="text-[11px] uppercase tracking-wider text-luz-300 font-bold block">Teléfono Urgencias 24h</span>
+            <span class="text-2xl sm:text-3xl font-black text-white">+34 900 800 900</span>
+          </div>
+          <a href="tel:+34900800900" class="w-full sm:w-auto px-7 py-4 rounded-xl bg-red-600 hover:bg-red-500 text-white font-extrabold text-sm shadow-lg flex items-center justify-center gap-2 transition">
+            <i class="fa-solid fa-phone-flip text-base"></i> Llamar al Hospital Ahora
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Modal Comanda / Simulador de Cuenta -->
-  <div id="comandaModal" class="fixed inset-0 z-50 bg-stone-900/70 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-fade-in border border-stone-200">
-      
-      <!-- Header -->
-      <div class="px-6 py-4 bg-stone-900 text-stone-100 flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <i class="fa-solid fa-receipt text-albero-400"></i>
-          <h3 class="font-serif font-bold text-lg">Mi Comanda</h3>
-        </div>
-        <button onclick="toggleComandaModal()" class="text-stone-400 hover:text-white text-lg">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-
-      <!-- Content list -->
-      <div id="comandaItems" class="p-6 overflow-y-auto flex-1 space-y-3 custom-scrollbar">
-        <!-- Renderizado por JS -->
-      </div>
-
-      <!-- Footer with totals -->
-      <div class="p-6 bg-stone-50 border-t border-stone-200 space-y-3">
-        <div class="flex justify-between items-center text-sm text-stone-600">
-          <span>Subtotal estimado</span>
-          <span id="comandaSubtotal" class="font-mono font-medium">0.00 €</span>
-        </div>
-        <div class="flex justify-between items-center text-xs text-stone-500">
-          <span>I.V.A. (10% incluido)</span>
-          <span id="comandaTax" class="font-mono">0.00 €</span>
-        </div>
-        <div class="flex justify-between items-center text-base font-bold text-stone-900 pt-2 border-t border-stone-200">
-          <span>Total a pagar</span>
-          <span id="comandaTotal" class="font-mono text-terracota-600 text-lg">0.00 €</span>
-        </div>
-
-        <div class="pt-2 flex gap-3">
-          <button onclick="clearComanda()" class="w-1/3 py-2.5 text-xs text-stone-600 hover:text-red-600 border border-stone-300 rounded-xl transition-colors">
-            Vaciar
-          </button>
-          <button onclick="copyComandaSummary()" class="w-2/3 py-2.5 bg-albero-500 hover:bg-albero-400 text-stone-950 font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow">
-            Copiar Resumen
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Notification Toast -->
-  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-stone-900 text-stone-100 px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-700 text-xs">
-    <i id="toastIcon" class="fa-solid fa-circle-check text-albero-400 text-base"></i>
-    <span id="toastMessage">Elemento añadido</span>
-  </div>
-
-  <!-- Reservation Confirmation Modal -->
-  <div id="confirmReservationModal" class="fixed inset-0 z-50 bg-stone-900/70 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-md w-full p-6 text-center shadow-2xl border border-stone-200">
-      <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center text-2xl mb-4">
-        <i class="fa-solid fa-check"></i>
-      </div>
-      <h3 class="font-serif text-2xl font-bold text-stone-900 mb-2">¡Mesa Solicitada!</h3>
-      <p id="reservationSummaryText" class="text-xs text-stone-600 leading-relaxed mb-6">
-        Hemos registrado tu petición. Te enviaremos una confirmación por SMS o WhatsApp antes del servicio.
-      </p>
-      <button onclick="closeReservationModal()" class="w-full py-3 bg-stone-900 hover:bg-stone-800 text-white rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors">
-        Entendido, muchas gracias
-      </button>
-    </div>
-  </div>
-
-  <footer id="contacto" class="bg-stone-950 text-stone-400 pt-16 pb-12 mt-auto border-t border-stone-800">
+  <!-- ================= TESTIMONIOS & OPINIONES ================= -->
+  <section id="opiniones" class="py-20 bg-luz-50/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-stone-800">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-xs font-bold tracking-widest uppercase text-luz-700 bg-white px-3.5 py-1 rounded-full border border-luz-200">
+          Experiencias Reales
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-2">
+          Familias con el Seguro de Salud Luz
+        </h2>
+        <div class="flex items-center justify-center gap-1.5 text-amber-400 text-sm mt-2">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <span class="text-slate-600 font-bold ml-2 text-xs">4.9 / 5 en más de 650 reseñas</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        <!-- About -->
+        <div class="p-6 rounded-3xl bg-white border border-luz-200 shadow-card-soft flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 text-xs mb-3">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed mb-4">
+              "Mi perra Kira se comió un calcetín un domingo por la tarde. Con el Seguro de 19,99€ la atendieron en urgencias sin cobrarme ni un euro por la consulta y la endoscopia tuvo el 50% de descuento. Nos salvó el mes."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-3 border-t border-luz-100">
+            <div class="w-10 h-10 rounded-full bg-luz-100 text-luz-700 flex items-center justify-center font-bold text-xs">
+              MR
+            </div>
+            <div>
+              <h4 class="text-xs font-bold text-slate-900">Marcos R. & Kira</h4>
+              <p class="text-[11px] text-luz-600 font-semibold">Asegurado hace 1 año</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-white border border-luz-200 shadow-card-soft flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 text-xs mb-3">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed mb-4">
+              "Tengo dos gatos. La zona 'Cat Friendly' es increíble, entras sin cruzarte con perros. Con el seguro incluyo vacunas y cualquier revisión menor sin pensármelo dos veces."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-3 border-t border-luz-100">
+            <div class="w-10 h-10 rounded-full bg-luz-100 text-luz-700 flex items-center justify-center font-bold text-xs">
+              SL
+            </div>
+            <div>
+              <h4 class="text-xs font-bold text-slate-900">Silvia L. & Oliver y Mia</h4>
+              <p class="text-[11px] text-luz-600 font-semibold">Póliza Familiar Luz</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-white border border-luz-200 shadow-card-soft flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-400 text-xs mb-3">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 italic leading-relaxed mb-4">
+              "Tratar a conejos suele ser carísimo porque pocos son expertos en exóticos. En Veterinaria Luz están cubiertos en el seguro de 19,99€ exactamente igual que un perro o gato. Maravilloso trato."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-3 border-t border-luz-100">
+            <div class="w-10 h-10 rounded-full bg-luz-100 text-luz-700 flex items-center justify-center font-bold text-xs">
+              AG
+            </div>
+            <div>
+              <h4 class="text-xs font-bold text-slate-900">Álvaro G. & Tambor</h4>
+              <p class="text-[11px] text-luz-600 font-semibold">Paciente Exótico</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-luz-deep text-slate-400 pt-16 pb-12 border-t border-luz-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        
+        <!-- Info Marca -->
         <div class="space-y-4">
           <div class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded-full bg-albero-500 text-stone-950 flex items-center justify-center font-bold text-sm">
-              <i class="fa-solid fa-utensils"></i>
+            <div class="w-9 h-9 rounded-xl bg-luz-700 flex items-center justify-center text-white">
+              <i class="fa-solid fa-paw"></i>
             </div>
-            <span class="font-title text-stone-100 tracking-wider font-bold">LA ALHAMEÑA</span>
+            <span class="text-2xl font-black text-white">Veterinaria <span class="text-luz-400 font-serif italic">Luz</span></span>
           </div>
-          <p class="text-xs leading-relaxed text-stone-400">
-            Taberna y restaurante tradicional. Auténticas tapas granadinas, frituras de costa y guisos de Sierra Nevada servidos con hospitalidad andaluza.
+          <p class="text-xs leading-relaxed text-slate-400">
+            Medicina veterinaria basada en el amor animal, tecnología de diagnóstico de vanguardia y tarifas justas con seguro integral.
           </p>
-          <div class="flex gap-3 text-stone-300">
-            <span class="w-8 h-8 rounded-full bg-stone-900 flex items-center justify-center hover:text-albero-400 cursor-pointer border border-stone-800"><i class="fa-brands fa-instagram"></i></span>
-            <span class="w-8 h-8 rounded-full bg-stone-900 flex items-center justify-center hover:text-albero-400 cursor-pointer border border-stone-800"><i class="fa-brands fa-facebook-f"></i></span>
-            <span class="w-8 h-8 rounded-full bg-stone-900 flex items-center justify-center hover:text-albero-400 cursor-pointer border border-stone-800"><i class="fa-brands fa-tripadvisor"></i></span>
+          <div class="flex gap-3 text-slate-300 pt-1">
+            <a href="#" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-luz-600 flex items-center justify-center transition"><i class="fa-brands fa-instagram text-sm"></i></a>
+            <a href="#" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-luz-600 flex items-center justify-center transition"><i class="fa-brands fa-tiktok text-sm"></i></a>
+            <a href="#" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-luz-600 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f text-sm"></i></a>
           </div>
         </div>
 
-        <!-- Location -->
+        <!-- Horarios -->
         <div>
-          <h4 class="text-sm font-semibold text-stone-100 uppercase tracking-wider mb-4 font-serif">Encuéntranos</h4>
-          <p class="text-xs text-stone-400 leading-relaxed space-y-1">
-            <span class="block text-stone-300"><i class="fa-solid fa-location-dot text-terracota-500 mr-1.5"></i> Calle San Matías, 18 (Barrio del Realejo)</span>
-            <span class="block">18009 Granada, España</span>
-            <span class="block text-stone-500 mt-2">A 3 minutos de Plaza Nueva y a los pies de la Alhambra.</span>
-          </p>
-        </div>
-
-        <!-- Schedule -->
-        <div>
-          <h4 class="text-sm font-semibold text-stone-100 uppercase tracking-wider mb-4 font-serif">Horarios</h4>
-          <ul class="text-xs space-y-1.5 text-stone-400">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Horario Clínica</h4>
+          <ul class="space-y-2 text-xs">
             <li class="flex justify-between">
-              <span>Martes a Domingo:</span>
-              <span class="text-stone-300">12:30 - 17:00</span>
+              <span>Lunes a Viernes:</span>
+              <span class="text-white font-semibold">09:00 - 20:30 h</span>
             </li>
             <li class="flex justify-between">
-              <span>Noches:</span>
-              <span class="text-stone-300">20:00 - 00:00</span>
+              <span>Sábados:</span>
+              <span class="text-white font-semibold">10:00 - 15:00 h</span>
             </li>
-            <li class="flex justify-between text-terracota-400 pt-1">
-              <span>Lunes:</span>
-              <span>Cerrado por descanso</span>
+            <li class="flex justify-between text-red-400 font-bold pt-1">
+              <span>URGENCIAS UCI:</span>
+              <span>24 HORAS / 365 DÍAS</span>
             </li>
           </ul>
         </div>
 
-        <!-- Badges / Granada info -->
+        <!-- Enlaces Rápidos -->
         <div>
-          <h4 class="text-sm font-semibold text-stone-100 uppercase tracking-wider mb-4 font-serif">Compromiso Granada</h4>
-          <p class="text-xs text-stone-400 leading-relaxed mb-3">
-            Orgullosos miembros de la Asociación de Hostelería de Granada. Ingredientes amparados por Denominaciones de Origen de Andalucía.
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Servicios & Póliza</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#seguro" class="hover:text-luz-300 transition">Seguro Luz 19,99€ / mes</a></li>
+            <li><a href="#comparativa" class="hover:text-luz-300 transition">Comparativa de Ahorro</a></li>
+            <li><a href="#especialidades" class="hover:text-luz-300 transition">Área Felina Fear Free</a></li>
+            <li><a href="#especialidades" class="hover:text-luz-300 transition">Cirugía Laparoscópica</a></li>
+            <li><a href="#pedir-cita" class="hover:text-luz-300 transition">Cita Previa Online</a></li>
+          </ul>
+        </div>
+
+        <!-- Ubicación -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Ubicación</h4>
+          <p class="text-xs text-slate-300 mb-2">
+            <i class="fa-solid fa-location-dot text-luz-400 mr-1.5"></i> Calle Gran Vía 124, 28013 Madrid
           </p>
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stone-900 border border-stone-800 text-[11px] text-albero-400">
-            <i class="fa-solid fa-beer-mug-empty"></i> Cerveza Alhambra de grifo bien fría
+          <p class="text-xs text-slate-300 mb-3">
+            <i class="fa-solid fa-square-parking text-luz-400 mr-1.5"></i> Parking reservado exclusivo clientes
+          </p>
+          <div class="p-3 rounded-xl bg-white/5 border border-luz-500/20 text-xs">
+            <span class="text-emerald-400 font-bold block mb-0.5">● Entrada Urgencias activa</span>
+            <span class="text-[11px] text-slate-400">Timbre exterior para acceso nocturno directo.</span>
           </div>
         </div>
 
       </div>
 
-      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-4">
-        <p>© <span id="currentYear"></span> Taberna La Alhameña S.L. - Todos los derechos reservados.</p>
-        <p class="text-stone-600">Precios con I.V.A. incluido conforme a normativa turística.</p>
+      <div class="pt-8 border-t border-luz-900/60 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>© <span id="year"></span> Veterinaria Luz S.L. Todos los derechos reservados.</p>
+        <div class="flex gap-4 text-xs">
+          <a href="#" class="hover:text-slate-300">Condiciones de Póliza</a>
+          <a href="#" class="hover:text-slate-300">Aviso Legal</a>
+          <a href="#" class="hover:text-slate-300">Privacidad</a>
+        </div>
       </div>
+
     </div>
   </footer>
 
-  <script>
-    // Menú con precios realistas y representativos de Granada
-    const menuData = [
-      // ENTRANTES / PARA TAPEAR
-      {
-        id: "ent-1",
-        category: "entrantes",
-        categoryLabel: "Entrantes",
-        title: "Berenjenas con Miel de Caña",
-        desc: "Láminas finas crujientes con auténtica miel de caña de Frigiliana y toque de sal marina.",
-        price: 7.50,
-        badge: "Clásico Andaluz",
-        icon: "fa-seedling"
-      },
-      {
-        id: "ent-2",
-        category: "entrantes",
-        categoryLabel: "Entrantes",
-        title: "Salmorejo Cordobés Tradicional",
-        desc: "Emulsión sedosa de tomate de la vega, virutas de jamón de Trevélez y huevo duro de corral.",
-        price: 6.00,
-        badge: "Recomendado",
-        icon: "fa-bowl-food"
-      },
-      {
-        id: "ent-3",
-        category: "entrantes",
-        categoryLabel: "Entrantes",
-        title: "Remojón Granadino de Bacalao",
-        desc: "Ensalada tradicional de naranja dulce, bacalao desalado desmigado, cebolleta y aceitunas negras.",
-        price: 7.50,
-        badge: "Típico Granada",
-        icon: "fa-lemon"
-      },
-      {
-        id: "ent-4",
-        category: "entrantes",
-        categoryLabel: "Entrantes",
-        title: "Croquetas de Rabo de Toro (6 uds)",
-        desc: "Bechamel cremosa, guiso desmigado con vino oloroso y rebozado de panko crujiente.",
-        price: 8.00,
-        badge: "Caseras",
-        icon: "fa-cookie"
-      },
-      {
-        id: "ent-5",
-        category: "entrantes",
-        categoryLabel: "Entrantes",
-        title: "Tabla de Jamón de Trevélez y Queso Montefrío",
-        desc: "Jamón curado a más de 1.400m de altitud con queso curado de cabra premiado y regañás.",
-        price: 13.50,
-        badge: "Sierra Nevada",
-        icon: "fa-bacon"
-      },
+  <!-- ================= MODAL INTERACTIVO DE CONTRATACIÓN (SEGURO 19,99€) ================= -->
+  <div id="subscriptionModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-xl w-full shadow-2xl border border-luz-200 overflow-hidden relative my-8 animate-in fade-in zoom-in-95 duration-200">
+      
+      <!-- Cabecera del Modal -->
+      <div class="gradient-dark-purple p-6 text-white relative">
+        <button onclick="closeSubscriptionModal()" aria-label="Cerrar modal" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="flex items-center gap-2 mb-1">
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-luz-400 text-luz-950 uppercase">Alta Online Inmediata</span>
+          <span class="text-xs text-luz-200">Sin permanencia</span>
+        </div>
+        <h3 class="text-2xl font-black">Seguro de Salud Animal Luz</h3>
+        <div class="flex items-baseline gap-1 mt-1">
+          <span class="text-3xl font-black text-amber-300">19,99 €</span>
+          <span class="text-xs text-luz-200">/ mes (IVA incluido)</span>
+        </div>
 
-      // GUISOS Y CARNES
-      {
-        id: "carne-1",
-        category: "carnes",
-        categoryLabel: "Guisos y Carnes",
-        title: "Habitas Baby con Jamón y Huevo Poché",
-        desc: "Habitas tiernas salteadas con dados de jamón ibérico de la sierra y yema lista para romper.",
-        price: 11.00,
-        badge: "Vega de Granada",
-        icon: "fa-egg"
-      },
-      {
-        id: "carne-2",
-        category: "carnes",
-        categoryLabel: "Guisos y Carnes",
-        title: "Rabo de Toro al Vino de la Alpujarra",
-        desc: "Estofado lentamente durante 5 horas, meloso, con salsa reducida y patatas panaderas.",
-        price: 14.50,
-        badge: "Especialidad",
-        icon: "fa-fire-burner"
-      },
-      {
-        id: "carne-3",
-        category: "carnes",
-        categoryLabel: "Guisos y Carnes",
-        title: "Auténtico Plato Alpujarreño",
-        desc: "Lomo de orza, longaniza casera, morcilla, patatas a lo pobre con pimientos y dos huevos fritos.",
-        price: 11.50,
-        badge: "Contundente",
-        icon: "fa-plate-wheat"
-      },
-      {
-        id: "carne-4",
-        category: "carnes",
-        categoryLabel: "Guisos y Carnes",
-        title: "Secreto Ibérico a la Brasa",
-        desc: "Corte jugoso a la parrilla con sal en escamas y guarnición de patatas a lo pobre confitadas.",
-        price: 13.00,
-        badge: "Brasa",
-        icon: "fa-drumstick-bite"
-      },
+        <!-- Indicador de pasos -->
+        <div class="flex items-center justify-between mt-6 text-xs font-bold text-luz-300">
+          <span id="stepIndicator1" class="text-white flex items-center gap-1.5"><span class="w-5 h-5 rounded-full bg-luz-500 text-white flex items-center justify-center text-[10px]">1</span> Mascota</span>
+          <span class="h-0.5 w-8 bg-luz-700"></span>
+          <span id="stepIndicator2" class="opacity-60 flex items-center gap-1.5"><span class="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-[10px]">2</span> Tutor/a</span>
+          <span class="h-0.5 w-8 bg-luz-700"></span>
+          <span id="stepIndicator3" class="opacity-60 flex items-center gap-1.5"><span class="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-[10px]">3</span> Pago</span>
+        </div>
+      </div>
 
-      // DEL MAR (PESCAÍTO)
-      {
-        id: "mar-1",
-        category: "mar",
-        categoryLabel: "Del Mar",
-        title: "Fritura Variada de la Costa Tropical",
-        desc: "Boquerones vitorianos, calamares y salmonetes en harina limpia de almorta y AOVE bien caliente.",
-        price: 12.00,
-        badge: "Motril y Almuñécar",
-        icon: "fa-fish"
-      },
-      {
-        id: "mar-2",
-        category: "mar",
-        categoryLabel: "Del Mar",
-        title: "Cazón en Adobo al Estilo Andaluz",
-        desc: "Macerado con comino, orégano, ajo y vinagre de Jerez, frito crujiente por fuera y jugoso dentro.",
-        price: 9.50,
-        badge: "Sabor Costero",
-        icon: "fa-fish-fins"
-      },
-      {
-        id: "mar-3",
-        category: "mar",
-        categoryLabel: "Del Mar",
-        title: "Calamares Fritos a la Andaluza",
-        desc: "Tiras frescas de calamar enharinadas al punto con rodaja de limón andaluz.",
-        price: 10.50,
-        badge: "Fritura Limpia",
-        icon: "fa-shrimp"
-      },
+      <!-- Contenido del Formulario por Pasos -->
+      <div class="p-6 sm:p-8">
 
-      // POSTRES CASEROS
-      {
-        id: "pos-1",
-        category: "postres",
-        categoryLabel: "Postres",
-        title: "Piononos Artesanos de Santa Fe (2 uds)",
-        desc: "Bizcocho humedecido en almíbar, enrollado con crema y coronado con yema tostada.",
-        price: 4.00,
-        badge: "Postre Insignia",
-        icon: "fa-cake-candles"
-      },
-      {
-        id: "pos-2",
-        category: "postres",
-        categoryLabel: "Postres",
-        title: "Tarta de Queso Curado Payoyo",
-        desc: "Horneada al punto cremoso con un toque intenso de queso gaditano y base de galleta de canela.",
-        price: 5.00,
-        badge: "Casera 100%",
-        icon: "fa-cheese"
-      },
-      {
-        id: "pos-3",
-        category: "postres",
-        categoryLabel: "Postres",
-        title: "Poleá Dulce con Tostones y Canela",
-        desc: "Gachas dulces tradicionales perfumadas con anís estrellado, tostones fritos y canela molida.",
-        price: 4.00,
-        badge: "Receta Abuela",
-        icon: "fa-spoon"
-      },
+        <!-- PASO 1: DATOS DE LA MASCOTA -->
+        <div id="step1" class="space-y-4">
+          <h4 class="text-sm font-extrabold text-luz-950 uppercase tracking-wider">Paso 1: ¿A quién vamos a proteger?</h4>
+          
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Nombre de la mascota *</label>
+            <input type="text" id="insPetName" placeholder="Ej: Milo" class="w-full px-4 py-3 rounded-xl bg-luz-50 border border-luz-200 focus:outline-none focus:border-luz-600 text-sm">
+          </div>
 
-      // BEBIDAS Y VINOS
-      {
-        id: "beb-1",
-        category: "bebidas",
-        categoryLabel: "Bebidas",
-        title: "Cerveza Alhambra Especial (Tercio)",
-        desc: "Cerveza rubia de Granada por excelencia, servida a temperatura óptima.",
-        price: 2.50,
-        badge: "Cerveza Local",
-        icon: "fa-beer-mug-empty"
-      },
-      {
-        id: "beb-2",
-        category: "bebidas",
-        categoryLabel: "Bebidas",
-        title: "Cerveza Alhambra Reserva 1925 ('Milno')",
-        desc: "Extra intensa y aromática, icono granadino de botella verde labrada.",
-        price: 3.00,
-        badge: "Favorita",
-        icon: "fa-bottle-droplet"
-      },
-      {
-        id: "beb-3",
-        category: "bebidas",
-        categoryLabel: "Bebidas",
-        title: "Copa de Vino Tinto D.O. Vinos de Granada",
-        desc: "Uvas cultivadas en la altura de Sierra Nevada y Contraviesa. Frutal y equilibrado.",
-        price: 3.00,
-        badge: "D.O. Granada",
-        icon: "fa-wine-glass"
-      },
-      {
-        id: "beb-4",
-        category: "bebidas",
-        categoryLabel: "Bebidas",
-        title: "Tinto de Verano Casero con Limón Natural",
-        desc: "Elaborado con vino tinto de la casa, zumo de limón fresco y toque de soda.",
-        price: 2.70,
-        badge: "Refrescante",
-        icon: "fa-glass-water"
-      }
-    ];
-
-    // Categorías para los filtros
-    const categories = [
-      { id: "todos", name: "Todos los Platos" },
-      { id: "entrantes", name: "Tapeo y Entrantes" },
-      { id: "carnes", name: "Guisos y Carnes" },
-      { id: "mar", name: "Del Mar" },
-      { id: "postres", name: "Postres" },
-      { id: "bebidas", name: "Bebidas y Vinos" }
-    ];
-
-    let currentCategory = "todos";
-    let searchQuery = "";
-    let comanda = {}; // { dishId: quantity }
-
-    // Inicializar año actual en pie de página
-    document.getElementById('currentYear').innerText = new Date().getFullYear();
-
-    // Establecer fecha mínima para reservas a hoy
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('resDate').min = today;
-    document.getElementById('resDate').value = today;
-
-    // Renderizado de las pestañas de categoría
-    function renderCategoryTabs() {
-      const container = document.getElementById("categoryContainer");
-      container.innerHTML = categories.map(cat => {
-        const isActive = cat.id === currentCategory;
-        return `
-          <button 
-            onclick="setCategory('${cat.id}')" 
-            class="px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
-              isActive 
-                ? 'bg-stone-900 text-albero-400 shadow-sm border border-stone-800' 
-                : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
-            }"
-          >
-            ${cat.name}
-          </button>
-        `;
-      }).join('');
-    }
-
-    // Cambiar categoría seleccionada
-    function setCategory(catId) {
-      currentCategory = catId;
-      renderCategoryTabs();
-      renderMenu();
-    }
-
-    function renderMenu() {
-      const grid = document.getElementById("menuGrid");
-      const noResults = document.getElementById("noResults");
-
-      const filtered = menuData.filter(item => {
-        const matchesCategory = currentCategory === "todos" || item.category === currentCategory;
-        const query = searchQuery.trim().toLowerCase();
-        const matchesSearch = query === "" || 
-          item.title.toLowerCase().includes(query) || 
-          item.desc.toLowerCase().includes(query) ||
-          item.categoryLabel.toLowerCase().includes(query);
-        return matchesCategory && matchesSearch;
-      });
-
-      if (filtered.length === 0) {
-        grid.innerHTML = "";
-        noResults.classList.remove("hidden");
-        return;
-      }
-
-      noResults.classList.add("hidden");
-
-      grid.innerHTML = filtered.map(dish => {
-        const qtyInComanda = comanda[dish.id] || 0;
-        return `
-          <div class="bg-white rounded-2xl p-5 border border-stone-200/90 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+          <div class="grid grid-cols-2 gap-3">
             <div>
-              <div class="flex items-start justify-between gap-3 mb-2">
-                <div class="flex items-center gap-2">
-                  <span class="w-8 h-8 rounded-lg bg-stone-100 group-hover:bg-albero-100 text-stone-700 group-hover:text-albero-600 flex items-center justify-center text-sm transition-colors">
-                    <i class="fa-solid ${dish.icon}"></i>
-                  </span>
-                  <span class="text-[11px] font-semibold uppercase tracking-wider text-stone-400 font-mono">${dish.categoryLabel}</span>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Especie *</label>
+              <select id="insSpecies" class="w-full px-4 py-3 rounded-xl bg-luz-50 border border-luz-200 focus:outline-none focus:border-luz-600 text-sm">
+                <option value="Perro">Perro</option>
+                <option value="Gato">Gato</option>
+                <option value="Conejo">Conejo</option>
+                <option value="Hurón / Roedor">Hurón o Roedor</option>
+                <option value="Ave / Reptil">Ave o Reptil</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Edad aproximada *</label>
+              <select id="insAge" class="w-full px-4 py-3 rounded-xl bg-luz-50 border border-luz-200 focus:outline-none focus:border-luz-600 text-sm">
+                <option value="Cachorro (<1 año)">Cachorro (< 1 año)</option>
+                <option value="Adulto (1-7 años)" selected>Adulto (1 a 7 años)</option>
+                <option value="Senior (+7 años)">Senior (+7 años)</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Nº de Microchip (Opcional si aún no tiene)</label>
+            <input type="text" id="insMicrochip" placeholder="15 dígitos (Ej: 981098123456789)" class="w-full px-4 py-3 rounded-xl bg-luz-50 border border-luz-200 focus:outline-none focus:border-luz-600 text-sm">
+          </div>
+
+          <div class="pt-4">
+            <button onclick="goToStep(2)" class="w-full py-3.5 rounded-xl gradient-vibrant text-white font-bold text-sm shadow-md hover:shadow-purple-glow transition flex items-center justify-center gap-2">
+              Continuar con mis datos <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- PASO 2: DATOS DEL TUTOR/A -->
+        <div id="step2" class="space-y-4 hidden">
+          <h4 class="text-sm font-extrabold text-luz-950 uppercase tracking-wider">Paso 2: Datos de contacto del tutor</h4>
+          
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Nombre completo del titular *</label>
+            <input type="text" id="insOwnerName" placeholder="Tu nombre y apellidos" class="w-full px-4 py-3 rounded-xl bg-luz-50 border border-luz-200 focus:outline-none focus:border-luz-600 text-sm">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Correo Electrónico (para carnet digital) *</label>
+            <input type="email" id="insOwnerEmail" placeholder="tucorreo@ejemplo.com" class="w-full px-4 py-3 rounded-xl bg-luz-50 border border-luz-200 focus:outline-none focus:border-luz-600 text-sm">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Teléfono Móvil (WhatsApp de urgencias) *</label>
+            <input type="tel" id="insOwnerPhone" placeholder="+34 600 000 000" class="w-full px-4 py-3 rounded-xl bg-luz-50 border border-luz-200 focus:outline-none focus:border-luz-600 text-sm">
+          </div>
+
+          <div class="flex gap-3 pt-4">
+            <button onclick="goToStep(1)" class="w-1/3 py-3.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm transition">
+              Atrás
+            </button>
+            <button onclick="goToStep(3)" class="w-2/3 py-3.5 rounded-xl gradient-vibrant text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-2">
+              Ir a Confirmación y Pago <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- PASO 3: RESUMEN Y MÉTODO DE PAGO -->
+        <div id="step3" class="space-y-4 hidden">
+          <h4 class="text-sm font-extrabold text-luz-950 uppercase tracking-wider">Paso 3: Confirmación y Activación</h4>
+
+          <!-- Resumen de Contrato -->
+          <div class="p-4 rounded-2xl bg-luz-50 border border-luz-200 text-xs space-y-1.5">
+            <div class="flex justify-between font-bold text-slate-900">
+              <span>Mascota asegurada:</span>
+              <span id="summaryPet">-</span>
+            </div>
+            <div class="flex justify-between text-slate-600">
+              <span>Titular de la póliza:</span>
+              <span id="summaryOwner">-</span>
+            </div>
+            <div class="flex justify-between text-slate-600">
+              <span>Cuota mensual:</span>
+              <span class="font-bold text-luz-700">19,99 € / mes</span>
+            </div>
+            <div class="flex justify-between text-emerald-700 font-bold pt-1 border-t border-luz-200">
+              <span>Activación de coberturas:</span>
+              <span>Inmediata</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-2">Selecciona forma de pago mensual</label>
+            <div class="grid grid-cols-2 gap-3 mb-3">
+              <label class="cursor-pointer">
+                <input type="radio" name="payMethod" value="card" checked class="peer sr-only" onchange="togglePayInputs('card')">
+                <div class="p-3 rounded-xl border border-luz-200 peer-checked:border-luz-600 peer-checked:bg-luz-100/60 text-center text-xs font-bold transition">
+                  <i class="fa-regular fa-credit-card block text-base text-luz-700 mb-1"></i>
+                  Tarjeta de Débito/Crédito
                 </div>
-                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-albero-100 text-albero-800 border border-albero-200">
-                  ${dish.badge}
-                </span>
-              </div>
-
-              <h4 class="font-serif font-bold text-lg text-stone-900 group-hover:text-terracota-700 transition-colors">
-                ${dish.title}
-              </h4>
-              <p class="text-xs text-stone-600 mt-1.5 leading-relaxed font-light">
-                ${dish.desc}
-              </p>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="payMethod" value="iban" class="peer sr-only" onchange="togglePayInputs('iban')">
+                <div class="p-3 rounded-xl border border-luz-200 peer-checked:border-luz-600 peer-checked:bg-luz-100/60 text-center text-xs font-bold transition">
+                  <i class="fa-solid fa-building-columns block text-base text-luz-700 mb-1"></i>
+                  Domiciliación Bancaria (IBAN)
+                </div>
+              </label>
             </div>
 
-            <div class="pt-5 mt-4 border-t border-stone-100 flex items-center justify-between">
-              <div>
-                <span class="text-xs text-stone-400 block font-light">Precio ración</span>
-                <span class="font-mono text-xl font-bold text-stone-900">${dish.price.toFixed(2)} €</span>
+            <!-- Campos Tarjeta -->
+            <div id="cardFields" class="space-y-2">
+              <input type="text" placeholder="Número de Tarjeta (Simulado)" value="4532 •••• •••• 8821" class="w-full px-4 py-2.5 rounded-xl bg-luz-50 border border-luz-200 text-xs">
+              <div class="grid grid-cols-2 gap-2">
+                <input type="text" placeholder="MM/AA" value="12/28" class="px-3 py-2.5 rounded-xl bg-luz-50 border border-luz-200 text-xs">
+                <input type="text" placeholder="CVC" value="742" class="px-3 py-2.5 rounded-xl bg-luz-50 border border-luz-200 text-xs">
               </div>
+            </div>
 
+            <!-- Campos IBAN (Oculto por defecto) -->
+            <div id="ibanFields" class="space-y-2 hidden">
+              <input type="text" placeholder="ES91 2100 0418 4502 0005 1111" class="w-full px-4 py-2.5 rounded-xl bg-luz-50 border border-luz-200 text-xs font-mono">
+              <span class="text-[10px] text-slate-500 block">Cobro automático el día 1 de cada mes.</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-2 pt-1">
+            <input type="checkbox" id="termsAgree" checked class="mt-0.5 accent-luz-600 w-4 h-4 rounded">
+            <label for="termsAgree" class="text-[11px] text-slate-600">
+              Acepto los términos de la póliza de 19,99€/mes y la activación inmediata del carnet sanitario. Sin permanencia mínima.
+            </label>
+          </div>
+
+          <div class="flex gap-3 pt-3">
+            <button onclick="goToStep(2)" class="w-1/3 py-3.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm transition">
+              Atrás
+            </button>
+            <button onclick="finalizeSubscription()" class="w-2/3 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm shadow-md transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-lock"></i> Confirmar y Activar Póliza
+            </button>
+          </div>
+        </div>
+
+        <!-- PASO 4: ÉXITO Y CARNET DIGITAL -->
+        <div id="step4" class="hidden text-center space-y-6">
+          <div class="w-16 h-16 mx-auto rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl font-black">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+
+          <div>
+            <h4 class="text-2xl font-black text-slate-900">¡Póliza Activada con Éxito!</h4>
+            <p class="text-xs text-slate-600 mt-1">
+              Tu seguro está activo desde hoy. Ya puedes acudir a la clínica o llamar a urgencias.
+            </p>
+          </div>
+
+          <!-- CARNET SANITARIO DIGITAL GENERADO DINÁMICAMENTE -->
+          <div id="printableCard" class="mx-auto max-w-sm rounded-3xl gradient-dark-purple p-5 text-white text-left shadow-purple-intense border-2 border-luz-400 relative overflow-hidden">
+            <div class="absolute -right-6 -bottom-6 w-28 h-28 bg-luz-500/20 rounded-full blur-xl pointer-events-none"></div>
+
+            <div class="flex items-center justify-between pb-3 border-b border-luz-500/30">
               <div class="flex items-center gap-2">
-                ${qtyInComanda > 0 ? `
-                  <div class="flex items-center bg-stone-100 rounded-full p-1 border border-stone-300">
-                    <button onclick="changeQuantity('${dish.id}', -1)" class="w-6 h-6 rounded-full bg-white text-stone-800 flex items-center justify-center hover:bg-stone-200 text-xs font-bold shadow-xs">
-                      -
-                    </button>
-                    <span class="w-7 text-center font-mono font-bold text-xs text-stone-900">${qtyInComanda}</span>
-                    <button onclick="changeQuantity('${dish.id}', 1)" class="w-6 h-6 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-stone-800 text-xs font-bold shadow-xs">
-                      +
-                    </button>
-                  </div>
-                ` : `
-                  <button 
-                    onclick="changeQuantity('${dish.id}', 1)" 
-                    class="px-3.5 py-2 rounded-full bg-stone-900 hover:bg-terracota-600 text-white text-xs font-medium transition-colors flex items-center gap-1.5 shadow-sm"
-                  >
-                    <i class="fa-solid fa-plus text-[10px]"></i> Añadir
-                  </button>
-                `}
+                <i class="fa-solid fa-paw text-luz-300"></i>
+                <span class="font-black text-sm tracking-wide">Veterinaria Luz Pass</span>
               </div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-black bg-amber-400 text-luz-950">19,99€ / MES</span>
             </div>
-          </div>
-        `;
-      }).join('');
-    }
 
-    // Buscador interactivo
-    function handleSearch(val) {
-      searchQuery = val;
-      renderMenu();
-    }
-
-    function resetFilters() {
-      searchQuery = "";
-      document.getElementById('menuSearchInput').value = "";
-      currentCategory = "todos";
-      renderCategoryTabs();
-      renderMenu();
-    }
-
-    function changeQuantity(dishId, delta) {
-      const current = comanda[dishId] || 0;
-      const next = current + delta;
-      
-      if (next <= 0) {
-        delete comanda[dishId];
-      } else {
-        comanda[dishId] = next;
-      }
-
-      updateComandaBadge();
-      renderMenu();
-      renderComandaModal();
-
-      const dish = menuData.find(d => d.id === dishId);
-      if (delta > 0 && dish) {
-        showToast(`Añadido: ${dish.title}`);
-      }
-    }
-
-    function updateComandaBadge() {
-      const badge = document.getElementById("comandaBadge");
-      const totalUnits = Object.values(comanda).reduce((sum, q) => sum + q, 0);
-
-      if (totalUnits > 0) {
-        badge.innerText = totalUnits;
-        badge.classList.remove("hidden");
-      } else {
-        badge.classList.add("hidden");
-      }
-    }
-
-    function renderComandaModal() {
-      const itemsContainer = document.getElementById("comandaItems");
-      const subtotalEl = document.getElementById("comandaSubtotal");
-      const taxEl = document.getElementById("comandaTax");
-      const totalEl = document.getElementById("comandaTotal");
-
-      const entries = Object.entries(comanda);
-
-      if (entries.length === 0) {
-        itemsContainer.innerHTML = `
-          <div class="text-center py-10 text-stone-400">
-            <i class="fa-solid fa-utensils text-3xl mb-2 text-stone-300"></i>
-            <p class="text-sm font-medium">Aún no has seleccionado platos para la comanda.</p>
-            <p class="text-xs text-stone-400 mt-1">Explora la carta y pulsa en "Añadir" para simular tu cuenta.</p>
-          </div>
-        `;
-        subtotalEl.innerText = "0.00 €";
-        taxEl.innerText = "0.00 €";
-        totalEl.innerText = "0.00 €";
-        return;
-      }
-
-      let total = 0;
-
-      itemsContainer.innerHTML = entries.map(([dishId, qty]) => {
-        const dish = menuData.find(d => d.id === dishId);
-        if (!dish) return '';
-        const lineTotal = dish.price * qty;
-        total += lineTotal;
-
-        return `
-          <div class="flex items-center justify-between p-3 rounded-xl bg-stone-50 border border-stone-200">
-            <div class="flex-1 pr-3">
-              <h5 class="text-xs font-bold text-stone-800 leading-tight">${dish.title}</h5>
-              <div class="text-[11px] text-stone-500 font-mono mt-0.5">
-                ${qty} x ${dish.price.toFixed(2)} € = <span class="font-bold text-stone-800">${lineTotal.toFixed(2)} €</span>
+            <div class="py-4 space-y-2">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-luz-300 block">Paciente Asegurado</span>
+                <span id="cardPetName" class="text-xl font-black text-white">Milo</span>
+                <span id="cardSpeciesAge" class="text-xs text-luz-200 block">Perro · Adulto</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2 pt-1 text-xs">
+                <div>
+                  <span class="text-[10px] uppercase font-bold text-luz-300 block">Nº Póliza</span>
+                  <span id="cardPolicyNum" class="font-mono font-bold text-amber-300">LUZ-2026-9481</span>
+                </div>
+                <div>
+                  <span class="text-[10px] uppercase font-bold text-luz-300 block">Titular</span>
+                  <span id="cardOwnerName" class="font-semibold text-slate-200 truncate block">Carlos Pérez</span>
+                </div>
               </div>
             </div>
 
-            <div class="flex items-center gap-1.5">
-              <button onclick="changeQuantity('${dish.id}', -1)" class="w-6 h-6 rounded bg-stone-200 hover:bg-stone-300 text-stone-700 flex items-center justify-center text-xs font-bold">
-                -
-              </button>
-              <span class="w-5 text-center font-mono font-bold text-xs">${qty}</span>
-              <button onclick="changeQuantity('${dish.id}', 1)" class="w-6 h-6 rounded bg-stone-900 hover:bg-stone-800 text-white flex items-center justify-center text-xs font-bold">
-                +
-              </button>
+            <div class="pt-3 border-t border-luz-500/30 flex items-center justify-between text-[10px] text-luz-200">
+              <span>Urgencias 24h: +34 900 800 900</span>
+              <span class="text-emerald-400 font-bold">● VIGENTE</span>
             </div>
           </div>
-        `;
-      }).join('');
 
-      const iva = total * (10 / 110); // I.V.A incluido del 10%
-      const base = total - iva;
+          <div class="flex flex-col sm:flex-row gap-3 pt-2">
+            <button onclick="window.print()" class="w-full sm:w-1/2 py-3 rounded-xl bg-luz-100 hover:bg-luz-200 text-luz-900 font-bold text-xs transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-print"></i> Guardar / Imprimir Carnet
+            </button>
+            <button onclick="closeSubscriptionModal()" class="w-full sm:w-1/2 py-3 rounded-xl gradient-vibrant text-white font-bold text-xs shadow-md transition">
+              Finalizar y Cerrar
+            </button>
+          </div>
+        </div>
 
-      subtotalEl.innerText = base.toFixed(2) + " €";
-      taxEl.innerText = iva.toFixed(2) + " €";
-      totalEl.innerText = total.toFixed(2) + " €";
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Fecha mínima para el selector de cita
+    const dateInput = document.getElementById('appDate');
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.min = today;
+    dateInput.value = today;
+
+    // Toggle Menú Móvil
+    const menuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    document.querySelectorAll('.mobile-item').forEach(el => {
+      el.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    // MODAL DE CONTRATACIÓN
+    const modal = document.getElementById('subscriptionModal');
+    function openSubscriptionModal() {
+      goToStep(1);
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeSubscriptionModal() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
     }
 
-    function toggleComandaModal() {
-      const modal = document.getElementById("comandaModal");
-      const isHidden = modal.classList.contains("hidden");
-      if (isHidden) {
-        renderComandaModal();
-        modal.classList.remove("hidden");
-        modal.classList.add("flex");
-      } else {
-        modal.classList.add("hidden");
-        modal.classList.remove("flex");
-      }
-    }
-
-    function clearComanda() {
-      comanda = {};
-      updateComandaBadge();
-      renderMenu();
-      renderComandaModal();
-      showToast("Comanda vaciada");
-    }
-
-    // Copiar resumen al portapapeles sin navigator.clipboard restringido
-    function copyComandaSummary() {
-      const entries = Object.entries(comanda);
-      if (entries.length === 0) {
-        showToast("La comanda está vacía");
-        return;
-      }
-
-      let summary = "🍽️ Comanda - Taberna La Alhameña (Granada)\n----------------------------------------\n";
-      let total = 0;
-
-      entries.forEach(([dishId, qty]) => {
-        const dish = menuData.find(d => d.id === dishId);
-        if (dish) {
-          const sub = dish.price * qty;
-          total += sub;
-          summary += `• ${qty}x ${dish.title} - ${sub.toFixed(2)} €\n`;
+    // Navegación por pasos
+    function goToStep(stepNumber) {
+      if (stepNumber === 2) {
+        const petName = document.getElementById('insPetName').value.trim();
+        if (!petName) {
+          alertCustom("Por favor indica el nombre de la mascota");
+          return;
         }
-      });
-
-      summary += `----------------------------------------\nTotal estimado: ${total.toFixed(2)} € (IVA inc.)`;
-
-      // Fallback robusto con textarea para cumplir restricciones de iframe
-      const tempTextArea = document.createElement("textarea");
-      tempTextArea.value = summary;
-      tempTextArea.style.position = "fixed";
-      tempTextArea.style.left = "-9999px";
-      document.body.appendChild(tempTextArea);
-      tempTextArea.select();
-      
-      try {
-        document.execCommand("copy");
-        showToast("¡Comanda copiada al portapapeles!");
-      } catch (err) {
-        showToast("No se pudo copiar el texto.");
       }
-      document.body.removeChild(tempTextArea);
+
+      if (stepNumber === 3) {
+        const ownerName = document.getElementById('insOwnerName').value.trim();
+        const ownerEmail = document.getElementById('insOwnerEmail').value.trim();
+        const ownerPhone = document.getElementById('insOwnerPhone').value.trim();
+        if (!ownerName || !ownerEmail || !ownerPhone) {
+          alertCustom("Por favor completa los datos de contacto");
+          return;
+        }
+
+        // Actualizar resumen
+        document.getElementById('summaryPet').textContent = `${document.getElementById('insPetName').value} (${document.getElementById('insSpecies').value})`;
+        document.getElementById('summaryOwner').textContent = ownerName;
+      }
+
+      // Ocultar todos
+      document.getElementById('step1').classList.add('hidden');
+      document.getElementById('step2').classList.add('hidden');
+      document.getElementById('step3').classList.add('hidden');
+      document.getElementById('step4').classList.add('hidden');
+
+      // Mostrar seleccionado
+      document.getElementById(`step${stepNumber}`).classList.remove('hidden');
+
+      // Actualizar indicadores
+      const ind1 = document.getElementById('stepIndicator1');
+      const ind2 = document.getElementById('stepIndicator2');
+      const ind3 = document.getElementById('stepIndicator3');
+
+      ind1.className = stepNumber >= 1 ? 'text-white flex items-center gap-1.5' : 'opacity-60 flex items-center gap-1.5';
+      ind2.className = stepNumber >= 2 ? 'text-white flex items-center gap-1.5' : 'opacity-60 flex items-center gap-1.5';
+      ind3.className = stepNumber >= 3 ? 'text-white flex items-center gap-1.5' : 'opacity-60 flex items-center gap-1.5';
     }
 
-    // Sistema de notificaciones toast flotante
-    let toastTimeout;
-    function showToast(message) {
-      const toast = document.getElementById("toastNotification");
-      const msgSpan = document.getElementById("toastMessage");
-      msgSpan.innerText = message;
-
-      toast.classList.remove("translate-y-20", "opacity-0");
-      toast.classList.add("translate-y-0", "opacity-100");
-
-      clearTimeout(toastTimeout);
-      toastTimeout = setTimeout(() => {
-        toast.classList.add("translate-y-20", "opacity-0");
-        toast.classList.remove("translate-y-0", "opacity-100");
-      }, 2500);
+    function togglePayInputs(type) {
+      if (type === 'iban') {
+        document.getElementById('cardFields').classList.add('hidden');
+        document.getElementById('ibanFields').classList.remove('hidden');
+      } else {
+        document.getElementById('cardFields').classList.remove('hidden');
+        document.getElementById('ibanFields').classList.add('hidden');
+      }
     }
 
-    function handleReservationSubmit(e) {
+    // Finalizar contratación y generar carnet
+    function finalizeSubscription() {
+      const pet = document.getElementById('insPetName').value;
+      const species = document.getElementById('insSpecies').value;
+      const age = document.getElementById('insAge').value;
+      const owner = document.getElementById('insOwnerName').value;
+
+      // Generar póliza aleatoria
+      const randomPolicy = 'LUZ-2026-' + Math.floor(1000 + Math.random() * 9000);
+
+      // Inyectar en carnet
+      document.getElementById('cardPetName').textContent = pet;
+      document.getElementById('cardSpeciesAge').textContent = `${species} · ${age}`;
+      document.getElementById('cardPolicyNum').textContent = randomPolicy;
+      document.getElementById('cardOwnerName').textContent = owner;
+
+      // Ir al paso 4
+      document.getElementById('step3').classList.add('hidden');
+      document.getElementById('step4').classList.remove('hidden');
+    }
+
+    // GESTIÓN DEL FORMULARIO DE CITA PREVIA
+    function handleAppointment(e) {
       e.preventDefault();
-      const name = document.getElementById('resName').value;
-      const guests = document.getElementById('resGuests').value;
-      const date = document.getElementById('resDate').value;
-      const time = document.getElementById('resTime').value;
+      const pet = document.getElementById('appPetName').value;
+      const date = document.getElementById('appDate').value;
+      const time = document.getElementById('appTime').value;
+      const owner = document.getElementById('appOwnerName').value;
 
-      const summaryText = document.getElementById("reservationSummaryText");
-      summaryText.innerHTML = `
-        Gracias <strong>${name}</strong>. Hemos registrado tu reserva para <strong>${guests} comensal(es)</strong> el día <strong>${date}</strong> a las <strong>${time} h</strong>.<br><br>
-        En caso de modificación, por favor llámanos al 958 22 45 78. ¡Te esperamos en Calle San Matías!
-      `;
+      const successBox = document.getElementById('appointmentSuccess');
+      const successMsg = document.getElementById('appointmentSuccessMsg');
 
-      const modal = document.getElementById("confirmReservationModal");
-      modal.classList.remove("hidden");
-      modal.classList.add("flex");
+      successMsg.innerHTML = `Gracias <strong>${owner}</strong>. Hemos recibido tu petición para <strong>${pet}</strong> el día <strong>${date}</strong> en la franja de <strong>${time}</strong>. Te contactaremos inmediatamente para confirmar.`;
 
-      document.getElementById('reservationForm').reset();
-      document.getElementById('resDate').value = today;
+      document.getElementById('appointmentForm').classList.add('hidden');
+      successBox.classList.remove('hidden');
+      successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    function closeReservationModal() {
-      const modal = document.getElementById("confirmReservationModal");
-      modal.classList.add("hidden");
-      modal.classList.remove("flex");
+    function resetAppointmentForm() {
+      document.getElementById('appointmentForm').reset();
+      document.getElementById('appointmentForm').classList.remove('hidden');
+      document.getElementById('appointmentSuccess').classList.add('hidden');
     }
 
-    // Toggle Mobile Menu
-    function toggleMobileMenu() {
-      const menu = document.getElementById("mobileMenu");
-      menu.classList.toggle("hidden");
+    // Modal de aviso ligero para no usar alert() nativo
+    function alertCustom(message) {
+      const banner = document.createElement('div');
+      banner.className = 'fixed bottom-6 right-6 z-50 bg-luz-950 text-white px-5 py-3 rounded-2xl shadow-2xl border border-luz-400 flex items-center gap-3 animate-bounce';
+      banner.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-amber-300"></i> <span class="text-xs font-bold">${message}</span>`;
+      document.body.appendChild(banner);
+      setTimeout(() => banner.remove(), 3200);
     }
-
-    // Inicializar vistas en carga
-    renderCategoryTabs();
-    renderMenu();
   </script>
 </body>
 </html>
